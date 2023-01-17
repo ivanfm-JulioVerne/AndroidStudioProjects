@@ -1,0 +1,64 @@
+1.- Desactivar el appbar en manifests/AndroidManifest.xml
+	android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
+2.- Crear vista de la toolbar en res/layout
+	<androidx.appcompat.widget.Toolbar
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?attr/colorPrimary"
+		android:minHeight="?attr/actionBarSize"
+		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+	/>
+
+3.- Crear carpeta menu en res y archivo menu.xml
+	<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		tools:context=".ui.MainActivity">
+		<item
+			android:id="@+id/item1"
+			android:orderInCategory="100"
+			app:showAsAction="collapseActionView"
+			android:title="Ver profesores" />
+	</menu>
+
+4.- En res/layout/main_activity incluir la vista de la toolbar
+	<include
+		android:id="@+id/toolbar"
+		layout="@layout/toolbar"/>
+		
+5.- Istanciar en java/com.example.examen/main_activity la toolbar
+	Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+	
+	/** import androidx.appcompat.widget.Toolbar; **/
+	
+6.- Se pueden añadir mas propiedades a la toolbar
+
+	toolbar.setTitle("titulo");
+	toolbar.setSubtitle(getString("subtitulo"));
+	
+7.- Importar el menu en la toolbar pegando este metodo
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		getMenuInflater().inflate(R.menu.menu,menu);
+		return true;
+	}
+
+	/* import android.view.Menu; */
+	
+8.- Crear el metodo que gestiona las opciones del menu
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch(item.getItemId()){
+			case R.id.item1:
+                break;
+		}
+		
+		return true;
+	}
+	
+	/* import android.view.MenuItem; */

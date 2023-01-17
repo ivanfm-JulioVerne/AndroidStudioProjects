@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_alimentos"
+    app:startDestination="@id/verAlimento">
+
+    <fragment
+        android:id="@+id/anadirAliemento"
+        android:name="com.example.ivan_fernandez_mendez_examen2.ui.Alimentos.AnadirAliemento"
+        android:label="fragment_anadir_aliemento"
+        tools:layout="@layout/fragment_anadir_aliemento" >
+        <action
+            android:id="@+id/action_anadirAliemento_to_verAlimento"
+            app:destination="@id/verAlimento" />
+    </fragment>
+    <fragment
+        android:id="@+id/verAlimento"
+        android:name="com.example.ivan_fernandez_mendez_examen2.ui.Alimentos.VerAlimento"
+        android:label="fragment_ver_alimento"
+        tools:layout="@layout/fragment_ver_alimento" >
+        <action
+            android:id="@+id/action_verAlimento_to_anadirAliemento"
+            app:destination="@id/anadirAliemento" />
+    </fragment>
+</navigation>

@@ -1,0 +1,57 @@
+ACTIVITY SIMPLE
+
+1.-Creo el activity(preferiblemente en el mismo directorio que el main_activity)
+
+2.-Comprueba que aparecen en manifests/androidManifest
+
+3.-Uso el metodo intent para cambiar de activity y mandar información entre ellas
+	Intent intent=new Intent(this, Activity2.class);
+	
+	intent.putExtra("mensaje",cadena);
+	
+	/*(los objetos deben ser serializables)*/
+	
+4.- Para realizar el cambio uso el objeto intent que creé anteriormente
+
+	startActivity(intent);
+
+5.- Si quiero recuperar los datos que he mandoda en el intent untilizo
+
+	Bundle extras=this.getIntent().getExtras();
+	
+	Ejempos:
+	
+	ArrayList<Alumno>alumnos=(ArrayList<Alumno>)extras.getSerializable("alumnos");
+	String mensaje=extras.getString("mensaje");
+	
+ACTIVITY CON RETORNO
+
+1.- Se crea el metodo que llamará a otra activity
+	
+	private void lanzarActivityConRetorno() {
+
+		Intent intent=new Intent(this, Activity2.class);
+	}
+	
+	/* import android.content.Intent; */
+	
+2.- En el activity de destino si quiero volver con los resultados copio lo siguiente
+	
+	private void devolverResults() {
+		Intent intent=new Intent();
+		intent.putExtra("valor","ya estoy de vuelta");
+		setResult(7,intent);
+		finish();
+	}
+	
+3.- Al volver si quiero ver quien ha sido el que a enviado el primer intent y saber de donde viene utilizo lo siguienteasi como acceder a los datos del segundo
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		//Primer parámetro determina quien envió el primer intent
+		//El segundo parámetro identifica el regreso
+		if (requestCode==1234 && resultCode==7){
+			String mensaje=data.getExtras().getString("valor");
+			Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+		}
+	}

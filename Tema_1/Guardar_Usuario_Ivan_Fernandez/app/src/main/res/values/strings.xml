@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Guardar_Usuario_Ivan_Fernandez</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="sexo">Género</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="otros">Otros</string>
+    <string name="titulos">Titulos</string>
+    <string name="dam">DAM</string>
+    <string name="daw">DAW</string>
+    <string name="asir">ASIR</string>
+    <string name="bGuardar">GUARDAR</string>
+    <string name="bBorrar">BORRAR</string>
+    <string name="bMostrar">MOSTRAR</string>
+</resources>

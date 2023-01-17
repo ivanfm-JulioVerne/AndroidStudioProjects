@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PruebaFragments2</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="texto_modo_noche">Modo noche</string>
+    <string name="texto_modo_dia">Modo día</string>
+</resources>

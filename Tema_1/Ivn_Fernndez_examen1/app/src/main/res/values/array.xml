@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones">
+        <item>m/s</item>
+        <item>m/min</item>
+        <item>km/h</item>
+        <item>km/min</item>
+    </string-array>
+</resources>

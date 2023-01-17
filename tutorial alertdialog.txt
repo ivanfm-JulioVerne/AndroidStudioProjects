@@ -1,0 +1,57 @@
+ALERT DIALOG SIMPLE
+1.- Utilizo un buider para hacer el alert
+
+	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	
+2.- Se introducen los parametros del dialog
+	
+	builder.setMessage("Esto es un mensaje de alerta.")
+		.setTitle("Información")
+		.setPositiveButton("OK",(dialog,id)->{dialog.cancel();});
+		
+3.- Construimos el AlertDialog a partir del Builder
+	
+	AlertDialog dialogo= builder.create();
+	
+4.- Mostramos el alert
+	
+	dialogo.show();
+	
+	
+ALERT DIALOG PERSONALIZADO
+
+1.- Crear la vista del alert
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+			<EditText
+				android:id="@+id/profesor"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:ems="10"
+				android:hint="Nombre"/>
+	</LinearLayout>
+	
+2.- Usamos el metodo inflate para utilizar la vista
+
+	LayoutInflater inflater = getLayoutInflater();
+	View view=inflater.inflate(R.layout.activity_formulario_add_profesor,null);
+	
+3.- Lo incorporamos en el builder
+	
+	builder
+		.setView(view)
+		.setTitle("Información")
+		.setPositiveButton("OK",(dialog,id)→{
+			// findViewById () se usa de la view creada
+			EditText editText=(EditText)(view.findViewById(R.id.profesor));
+			Editable texto=editText.getText();
+			//profesor es un objeto previo que hemos utilizado para guardar la información
+			profesor.setNombre(texto.toString());
+			validar(profesor);
+		})
+		.setNegativeButton("Cancelar",(dialog,id)->{dialog.cancel();});
