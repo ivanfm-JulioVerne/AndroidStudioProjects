@@ -107,10 +107,4 @@ public class MainActivity extends AppCompatActivity implements ModoNoche.GestorE
 
     }
 
-
-
-
-
-
-
 }
