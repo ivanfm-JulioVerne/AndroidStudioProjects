@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         //var alimento= Alimento(nombre = "Filete de pollo", proteinas = 150, grasas = 75, hidratos = 30)
         //AppDB.getAppDB(applicationContext)!!.daoAlimento().crearAlimento(alimento)
 
-        val alimentos: List<Alimento>? =
+        /*val alimentos: List<Alimento>? =
             AppDB.getAppDB(applicationContext)!!.daoAlimento().verAlimentos()
             Log.d(":::Recetas", "Lectura de alimentos")
         if (alimentos != null) {
@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
                     "\nId: ${re.id_receta}" +
                             "\nNombre: ${re.nombre}")
             }
-        }
+        }*/
     }
 }
