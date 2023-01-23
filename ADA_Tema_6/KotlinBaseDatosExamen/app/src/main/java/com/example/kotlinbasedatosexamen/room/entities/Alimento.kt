@@ -1,5 +1,6 @@
 package com.example.kotlinbasedatosexamen.room.entities
 
+import android.util.Log
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -24,5 +25,14 @@ data class Alimento(
                 nombre = nombre,
                 proteinas = proteinas,
                 grasas = grasas,
-                hidratos = hidratos)
+                hidratos = hidratos){}
+
+    fun mostrar():String{
+        return("Alimento:\n" +
+                " - Id: ${this.id_alimento}\n" +
+                " - Nombre: ${this.nombre}\n" +
+                " - Proteinas: ${this.proteinas}\n" +
+                " - Grasas: ${this.grasas}\n" +
+                " - Hidratos: ${this.hidratos}")
+    }
 }
