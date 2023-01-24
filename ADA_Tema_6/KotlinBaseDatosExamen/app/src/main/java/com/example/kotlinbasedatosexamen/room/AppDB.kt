@@ -55,7 +55,7 @@ abstract class AppDB : RoomDatabase() {
                 database.execSQL(
                     "CREATE TABLE 'ingrediente' " +
                             "('id_ingrediente' INTEGER,'cantidad' INTEGER NOT NULL," +
-                            "'id_receta' INTEGER NOT NULL,'id_alimento' INTEGER NOT NULL," +
+                            "'id_receta' INTEGER,'id_alimento' INTEGER," +
                             " PRIMARY KEY('id_ingrediente')," +
                             "FOREIGN KEY (id_receta) REFERENCES receta(id_receta)," +
                             "FOREIGN KEY (id_aliemnto) REFERENCES alimento(id_alimento))"

@@ -13,4 +13,10 @@ data class Receta(
     var nombre:String
 ){
     constructor(nombre: String):this(id_receta=null,nombre = nombre)
+
+    fun mostrar():String{
+        return("Receta:\n" +
+                " - Id: ${this.id_receta}\n" +
+                " - Nombre: ${this.nombre}")
+    }
 }
