@@ -3,6 +3,7 @@ package com.example.hokey.juego;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -53,6 +54,8 @@ public abstract class GameView extends SurfaceView implements Runnable {
     long ahora, tiempo_transcurrido;
 
     OnTouchEventListener listener;
+
+    int idTurno=0;
 
     public static LinkedList<Sprite> actores=new LinkedList<>();
 
@@ -145,15 +148,31 @@ public abstract class GameView extends SurfaceView implements Runnable {
     //GESTIÓN DE LAS ACCIONES DEL USUARIO SOBRE LA PANTALLA
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        int index = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
+
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                listener.ejecutaActionDown(event);
+                Log.d(":::",event.getPointerId(index)+"");
+                listener.ejecutaActionDown1(event);
                 break;
             case MotionEvent.ACTION_UP:
-                listener.ejecutaActionUp(event);
+                listener.ejecutaActionUp1(event);
                 break;
             case MotionEvent.ACTION_MOVE:
-                listener.ejecutaMove(event);
+                if (idTurno==0){
+                    listener.ejecutaMove(event,0);
+                    idTurno=1;
+                }else if (idTurno==1){
+                    listener.ejecutaMove(event,1);
+                    idTurno=0;
+                }
+
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                listener.ejecutaActionDown2(event,event.getActionIndex());
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                listener.ejecutaActionUp2(event,event.getActionIndex());
                 break;
         }
         return true;

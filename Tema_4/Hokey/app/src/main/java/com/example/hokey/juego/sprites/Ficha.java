@@ -13,6 +13,8 @@ public class Ficha extends Sprite implements OnColisionListener {
     public boolean activa=true;
     public boolean tocado;
 
+    public int idInput;
+
     public Ficha(GameView game, float centroX, float centroY, float radio,int color) {
         super(game);
         this.game = (Hokey)game;
@@ -20,6 +22,7 @@ public class Ficha extends Sprite implements OnColisionListener {
         this.centroY = centroY;
         this.radio = radio;
         this.color=color;
+        this.idInput= -1;
     }
 
     @Override

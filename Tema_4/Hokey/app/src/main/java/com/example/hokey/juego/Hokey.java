@@ -43,34 +43,78 @@ public class Hokey extends GameView implements OnTouchEventListener{
     }
 
     @Override
-    public void ejecutaActionDown(MotionEvent event) {
+    public void ejecutaActionDown1(MotionEvent event) {
+
         float coorX=event.getX();
         float coorY=event.getY();
 
         if (Utilidades.distancia(coorX,coorY,ficha1.centroX,ficha1.centroY)<ficha1.radio){
             ficha1.tocado=true;
-        }else  if (Utilidades.distancia(coorX,coorY,ficha2.centroX,ficha2.centroY)<ficha2.radio) {
+            ficha1.idInput=0;
+        }else if (Utilidades.distancia(coorX,coorY,ficha2.centroX,ficha2.centroY)<ficha2.radio) {
             ficha2.tocado = true;
+            ficha2.idInput=0;
         }
     }
 
     @Override
-    public void ejecutaActionUp(MotionEvent event) {
+    public void ejecutaActionUp1(MotionEvent event) {
         if (ficha1.tocado){
             ficha1.tocado=false;
-        }else if (ficha2.tocado){
+            Log.d(":::Si","si");
+        }
+        if (ficha2.tocado){
             ficha2.tocado=false;
         }
     }
 
     @Override
-    public void ejecutaMove(MotionEvent event) {
-        if(ficha1.tocado){
-            ficha1.centroX=event.getX();
-            ficha1.centroY=event.getY();
-        }else if(ficha2.tocado){
-            ficha2.centroX=event.getX();
-            ficha2.centroY=event.getY();
+    public void ejecutaActionDown2(MotionEvent event, int actionIndex) {
+
+        float coorX=event.getX(actionIndex);
+        float coorY=event.getY(actionIndex);
+
+        if (Utilidades.distancia(coorX,coorY,ficha1.centroX,ficha1.centroY)<ficha1.radio){
+            ficha1.tocado=true;
+            ficha1.idInput=1;
+        }else if (Utilidades.distancia(coorX,coorY,ficha2.centroX,ficha2.centroY)<ficha2.radio) {
+            ficha2.tocado = true;
+            ficha2.idInput=1;
+        }
+    }
+
+    @Override
+    public void ejecutaActionUp2(MotionEvent event, int actionIndex) {
+        if (ficha1.tocado){
+            ficha1.tocado=false;
+        }
+        if (ficha2.tocado){
+            ficha2.tocado=false;
+        }
+    }
+
+    @Override
+    public void ejecutaMove(MotionEvent event, int actionIndex) {
+        if (actionIndex==0){
+            if (ficha1.idInput==0 && ficha1.tocado){
+                Log.d(":::0","1");
+                ficha1.centroX=event.getX(actionIndex);
+                ficha1.centroY=event.getY(actionIndex);
+            }else if (ficha2.idInput==0 && ficha2.tocado){
+                Log.d(":::0","2");
+                ficha2.centroX=event.getX(actionIndex);
+                ficha2.centroY=event.getY(actionIndex);
+            }
+        }else if (actionIndex==1){
+            if (ficha1.idInput==1 && ficha1.tocado){
+                Log.d(":::1","1");
+                ficha1.centroX=event.getX(actionIndex);
+                ficha1.centroY=event.getY(actionIndex);
+            }else if (ficha2.idInput==1 && ficha2.tocado){
+                Log.d(":::1","2");
+                ficha2.centroX=event.getX(actionIndex);
+                ficha2.centroY=event.getY(actionIndex);
+            }
         }
     }
 
