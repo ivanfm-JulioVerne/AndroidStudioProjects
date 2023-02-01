@@ -98,6 +98,8 @@ public class Hokey extends GameView implements OnTouchEventListener{
         if (actionIndex==0){
             if (ficha1.idInput==0 && ficha1.tocado){
                 Log.d(":::0","1");
+                float newX=event.getX(actionIndex);
+                float newY=event.getY(actionIndex);
                 ficha1.centroX=event.getX(actionIndex);
                 ficha1.centroY=event.getY(actionIndex);
             }else if (ficha2.idInput==0 && ficha2.tocado){

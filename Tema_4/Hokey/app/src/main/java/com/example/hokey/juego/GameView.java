@@ -166,7 +166,6 @@ public abstract class GameView extends SurfaceView implements Runnable {
                     listener.ejecutaMove(event,1);
                     idTurno=0;
                 }
-
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 listener.ejecutaActionDown2(event,event.getActionIndex());
