@@ -55,9 +55,9 @@ public abstract class GameView extends SurfaceView implements Runnable {
 
     OnTouchEventListener listener;
 
-    int idTurno=0;
-
     public static LinkedList<Sprite> actores=new LinkedList<>();
+
+    int idTurno=0;
 
     public GameView(Context context, int x, int y) {
         super(context);
@@ -149,23 +149,15 @@ public abstract class GameView extends SurfaceView implements Runnable {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int index = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(":::",event.getPointerId(index)+"");
                 listener.ejecutaActionDown1(event);
                 break;
             case MotionEvent.ACTION_UP:
                 listener.ejecutaActionUp1(event);
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (idTurno==0){
-                    listener.ejecutaMove(event,0);
-                    idTurno=1;
-                }else if (idTurno==1){
-                    listener.ejecutaMove(event,1);
-                    idTurno=0;
-                }
+                idTurno=listener.ejecutaMove(event,idTurno);
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 listener.ejecutaActionDown2(event,event.getActionIndex());

@@ -59,11 +59,11 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     @Override
     public void ejecutaActionUp1(MotionEvent event) {
-        if (ficha1.tocado){
+        Log.d("1","1");
+        if (ficha1.tocado && ficha1.idInput==event.getActionIndex()){
             ficha1.tocado=false;
-            Log.d(":::Si","si");
         }
-        if (ficha2.tocado){
+        if (ficha2.tocado && ficha2.idInput==event.getActionIndex()){
             ficha2.tocado=false;
         }
     }
@@ -85,39 +85,71 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     @Override
     public void ejecutaActionUp2(MotionEvent event, int actionIndex) {
-        if (ficha1.tocado){
+        Log.d("2","2");
+        if (ficha1.tocado && ficha1.idInput==actionIndex){
+            Log.d("E","2");
             ficha1.tocado=false;
         }
-        if (ficha2.tocado){
+        if (ficha2.tocado && ficha2.idInput==actionIndex){
             ficha2.tocado=false;
         }
     }
 
     @Override
-    public void ejecutaMove(MotionEvent event, int actionIndex) {
+    public int ejecutaMove(MotionEvent event, int actionIndex) {
+        int turno=actionIndex;
         if (actionIndex==0){
+            Log.d("No","No");
             if (ficha1.idInput==0 && ficha1.tocado){
-                Log.d(":::0","1");
                 float newX=event.getX(actionIndex);
                 float newY=event.getY(actionIndex);
-                ficha1.centroX=event.getX(actionIndex);
-                ficha1.centroY=event.getY(actionIndex);
+                if (Utilidades.distancia(newX,newY,ficha1.centroX,ficha1.centroY)<(getmScreenY()/5)) {
+                    Log.d(":::0", "1");
+                    ficha1.centroX = event.getX(actionIndex);
+                    ficha1.centroY = event.getY(actionIndex);
+                }
             }else if (ficha2.idInput==0 && ficha2.tocado){
-                Log.d(":::0","2");
-                ficha2.centroX=event.getX(actionIndex);
-                ficha2.centroY=event.getY(actionIndex);
+
+                float newX=event.getX(actionIndex);
+                float newY=event.getY(actionIndex);
+                if (Utilidades.distancia(newX,newY,ficha2.centroX,ficha2.centroY)<(getmScreenY()/5)) {
+                    Log.d(":::0", "2");
+                    ficha2.centroX = event.getX(actionIndex);
+                    ficha2.centroY = event.getY(actionIndex);
+                }
             }
+            turno=1;
         }else if (actionIndex==1){
+            Log.d("Si","Si");
             if (ficha1.idInput==1 && ficha1.tocado){
-                Log.d(":::1","1");
-                ficha1.centroX=event.getX(actionIndex);
-                ficha1.centroY=event.getY(actionIndex);
+                int idx=0;
+                if (ficha2.tocado){
+                    idx=1;
+                }
+
+                float newX=event.getX(idx);
+                float newY=event.getY(idx);
+                if (Utilidades.distancia(newX,newY,ficha1.centroX,ficha1.centroY)<(getmScreenY()/5)){
+                    Log.d(":::1","1");
+                    ficha1.centroX=event.getX(idx);
+                    ficha1.centroY=event.getY(idx);
+                }
             }else if (ficha2.idInput==1 && ficha2.tocado){
-                Log.d(":::1","2");
-                ficha2.centroX=event.getX(actionIndex);
-                ficha2.centroY=event.getY(actionIndex);
+                int idx=0;
+                if (ficha1.tocado){
+                    idx=1;
+                }
+                float newX=event.getX(idx);
+                float newY=event.getY(idx);
+                if (Utilidades.distancia(newX,newY,ficha2.centroX,ficha2.centroY)<(getmScreenY()/5)) {
+                    Log.d(":::1", "2");
+                    ficha2.centroX = event.getX(idx);
+                    ficha2.centroY = event.getY(idx);
+                }
             }
+            turno=0;
         }
+        return turno;
     }
 
     public void setupGame(){
