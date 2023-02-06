@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.example.hokey.juego.sprites.Bola;
 import com.example.hokey.juego.sprites.Ficha;
 
 public class Hokey extends GameView implements OnTouchEventListener{
@@ -156,5 +157,7 @@ public class Hokey extends GameView implements OnTouchEventListener{
         ficha1=new Ficha(this,getmScreenX()/2,500,100,Color.BLUE);
 
         ficha2=new Ficha(this,getmScreenX()/2,getmScreenY()-500,100,Color.YELLOW);
+
+        Bola b=new Bola(this,getmScreenX()/2,getmScreenY()/2,100,Color.RED);
     }
 }
