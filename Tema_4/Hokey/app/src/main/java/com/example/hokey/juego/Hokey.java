@@ -44,10 +44,12 @@ public class Hokey extends GameView implements OnTouchEventListener{
     }
 
     @Override
-    public void ejecutaActionDown1(MotionEvent event) {
+    public int ejecutaActionDown1(MotionEvent event) {
 
         float coorX=event.getX();
         float coorY=event.getY();
+
+        int idInput=event.getPointerId(event.getActionIndex())
 
         if (Utilidades.distancia(coorX,coorY,ficha1.centroX,ficha1.centroY)<ficha1.radio){
             ficha1.tocado=true;
@@ -56,6 +58,8 @@ public class Hokey extends GameView implements OnTouchEventListener{
             ficha2.tocado = true;
             ficha2.idInput=0;
         }
+
+        return idInput;
     }
 
     @Override
@@ -70,7 +74,7 @@ public class Hokey extends GameView implements OnTouchEventListener{
     }
 
     @Override
-    public void ejecutaActionDown2(MotionEvent event, int actionIndex) {
+    public int ejecutaActionDown2(MotionEvent event, int actionIndex) {
 
         float coorX=event.getX(actionIndex);
         float coorY=event.getY(actionIndex);
