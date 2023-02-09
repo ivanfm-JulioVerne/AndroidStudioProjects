@@ -119,9 +119,7 @@ public class Bola extends Sprite implements OnColisionListener {
 
     @Override
     public  void pinta(Canvas canvas){
-        paint.setColor(color);
-        //paint.setStrokeWidth(8);
-        // paint.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle(centroX,centroY,radio, paint);
+        paint.setColor(this.color);
+        canvas.drawCircle(centroX,centroY,radio,paint);
     }
 }
