@@ -1,6 +1,7 @@
 package com.example.hokey.juego.sprites;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import com.example.hokey.juego.GameView;
 import com.example.hokey.juego.Hokey;
@@ -35,9 +36,13 @@ public class Bola extends Sprite implements OnColisionListener {
 
     @Override
     public boolean colision(Sprite s){
-        Bola b=(Bola)s;
-        boolean col= Utilidades.colisionCirculos(centroX,centroY,radio,b.centroX,b.centroY,b.radio);
-        if (!col) activa=true;
+        Log.d(":::Colion","Entre");
+        Ficha f=(Ficha)s;
+        boolean col= Utilidades.colisionCirculos(centroX,centroY,radio,f.centroX,f.centroY,f.radio);
+        if (!col) {
+            Log.d(":::Colion","If");
+            activa=true;
+        }
         return col;
     }
 
@@ -75,7 +80,9 @@ public class Bola extends Sprite implements OnColisionListener {
     @Override
     public void onColisionEvent(Sprite s) {
         if (s instanceof Ficha) {
+            Log.d(":::OnColisionEvent","If 1");
             if(activa){
+                Log.d(":::OnColisionEvent","If 2");
                 Bola b=(Bola)s;
                 float dy=(float)(b.centroY-centroY);
                 float dx=(float)(b.centroX-centroX);

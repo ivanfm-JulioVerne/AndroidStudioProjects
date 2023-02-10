@@ -65,7 +65,6 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     @Override
     public void ejecutaActionUp1(MotionEvent event) {
-        Log.d(":::1","1");
         if (ficha1.idInput==event.getPointerId(event.getActionIndex())){
             ficha1.tocado=false;
         }
@@ -96,9 +95,7 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     @Override
     public void ejecutaActionUp2(MotionEvent event, int actionIndex) {
-        Log.d(":::2",event.getPointerId(actionIndex)+"-----------------------------------------");
         if (ficha1.idInput==event.getPointerId(actionIndex)){
-            Log.d(":::Entro","entor");
             ficha1.tocado=false;
         }
         if (ficha2.idInput==event.getPointerId(actionIndex)){
@@ -173,7 +170,6 @@ public class Hokey extends GameView implements OnTouchEventListener{
         }
 
         if(ficha1Id==idEvento && ficha1.tocado){
-            Log.d(":::Cond1","1");
             float newX;
             float newY;
             try{
@@ -185,7 +181,6 @@ public class Hokey extends GameView implements OnTouchEventListener{
             }
 
             if (Utilidades.distancia(newX,newY,ficha1.centroX,ficha1.centroY)<(getmScreenY()/5)) {
-                Log.d(":::Cond2",ficha1Id+"");
                 try{
                     ficha1.centroX = event.getX(idEvento);
                     ficha1.centroY = event.getY(idEvento);
@@ -195,14 +190,11 @@ public class Hokey extends GameView implements OnTouchEventListener{
                 }
             }
             if (ficha2.tocado){
-                Log.d(":::Cond3","1");
                 idTurno=ficha2.idInput;
             }else {
-                Log.d(":::Cond3","2");
                 idTurno = ficha1.idInput;
             }
         }else if (ficha2Id==idEvento && ficha2.tocado){
-            Log.d(":::Cond1","2");
             float newX;
             float newY;
             try{
@@ -213,7 +205,6 @@ public class Hokey extends GameView implements OnTouchEventListener{
                 newY=event.getY(idEvento-1);
             }
             if (Utilidades.distancia(newX,newY,ficha2.centroX,ficha2.centroY)<(getmScreenY()/5)) {
-                Log.d(":::Cond2",ficha2Id+"");
                 try{
                     ficha2.centroX = event.getX(idEvento);
                     ficha2.centroY = event.getY(idEvento);
@@ -223,14 +214,11 @@ public class Hokey extends GameView implements OnTouchEventListener{
                 }
             }
             if (ficha1.tocado){
-                Log.d(":::Cond3","1");
                 idTurno=ficha1.idInput;
             }else{
-                Log.d(":::Cond3","2");
                 idTurno=ficha2.idInput;
             }
         }else{
-            Log.d(":::Cond1","3");
             idTurno=0;
         }
 
@@ -243,5 +231,9 @@ public class Hokey extends GameView implements OnTouchEventListener{
         ficha2=new Ficha(this,getmScreenX()/2,getmScreenY()-500,100,Color.YELLOW);
 
         disco=new Bola(this,getmScreenX()/2,getmScreenY()/2,100,Color.RED);
+
+        actores.add(ficha1);
+        actores.add(ficha2);
+        actores.add(disco);
     }
 }

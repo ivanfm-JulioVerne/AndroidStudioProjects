@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "716242719118",
+    "project_id": "gestionrutas-64dfc",
+    "storage_bucket": "gestionrutas-64dfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716242719118:android:48d2cc3028395dc63a54df",
+        "android_client_info": {
+          "package_name": "com.example.probargestionrutasfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716242719118-kj3bmrbcr8ennomdqg7eco1erg3r5lmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATpcFW3tp3at_P4aEYsvfebm_FPCergfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716242719118-kj3bmrbcr8ennomdqg7eco1erg3r5lmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

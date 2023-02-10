@@ -1,6 +1,7 @@
 package com.example.hokey.juego.sprites;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import com.example.hokey.juego.GameView;
 import com.example.hokey.juego.Hokey;
@@ -42,6 +43,7 @@ public class Ficha extends Sprite implements OnColisionListener {
 
     @Override
     public boolean colision(Sprite s) {
+        Log.d(":::Ficha","osiahf");
         return false;
     }
 

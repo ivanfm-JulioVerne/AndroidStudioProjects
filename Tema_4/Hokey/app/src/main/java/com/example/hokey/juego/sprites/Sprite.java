@@ -2,6 +2,7 @@ package com.example.hokey.juego.sprites;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 import com.example.hokey.juego.GameView;
 import com.example.hokey.juego.OnColisionListener;

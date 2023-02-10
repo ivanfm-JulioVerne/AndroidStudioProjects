@@ -83,11 +83,11 @@ public abstract class GameView extends SurfaceView implements Runnable {
     }
 
     public void update(){
-
         calculaFPS();
         actualiza();
         limpia();
         draw();
+        onFireColision();
 
     }
 
@@ -119,14 +119,19 @@ public abstract class GameView extends SurfaceView implements Runnable {
     }
 
     public  void onFireColision(){
-        for (int i=0;i<actores.size()-1;i++)
-            if(actores.get(i).isVisible()) {
-                Sprite actor=actores.get(i);
-                for (int j=i+1;j<actores.size();j++){
-                    if (actores.get(j).isVisible() && actor.colision(actores.get(j)))
-                        actor.onColisionEvent(actores.get(j));
+        for (int i=0;i<actores.size()-1;i++) {
+            if (actores.get(i).isVisible()) {
+                Sprite actor = actores.get(i);
+                for (int j = 0; j < actores.size()-1; j++) {
+                    if (!(actores.get(j)==actor)){
+                        if (actores.get(j).isVisible() && actor.colision(actores.get(j))){
+                            Log.d(":::OnFireColision","If 2");
+                            actor.onColisionEvent(actores.get(j));
+                        }
+                    }
                 }
             }
+        }
     }
     synchronized public void limpia(){
         for (int i=0;i<actores.size();i++)
