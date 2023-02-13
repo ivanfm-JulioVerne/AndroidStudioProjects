@@ -13,7 +13,7 @@ public class Bola extends Sprite implements OnColisionListener {
     private Hokey game;
     public float centroX,centroY,radio;
     public boolean activa=true;
-    public float rozamiento= (float) 0.98;
+    public float rozamiento= (float) 0.999;
 
     public Bola(GameView game, float centroX, float centroY, float radio,int color) {
         super(game);
@@ -22,25 +22,28 @@ public class Bola extends Sprite implements OnColisionListener {
         this.centroY = centroY;
         this.radio = radio;
         this.color=color;
+        this.velInicialX=0;
+        this.velInicialY=0;
+        velActualX=velInicialX;
+        velActualY=velInicialY;
     }
 
     @Override
     public void setup() {
         this.velActualX=0;
         this.velActualY=0;
-       /* this.velActualX=velInicialX* game.factor_mov;
-        this.velActualY=velInicialY* game.factor_mov;
-        */
+        this.velActualX=velInicialX;
+        this.velActualY=velInicialY;
 
     }
 
     @Override
     public boolean colision(Sprite s){
-        Log.d(":::Colion","Entre");
+        //Log.d(":::Colion","Entre");
         Ficha f=(Ficha)s;
         boolean col= Utilidades.colisionCirculos(centroX,centroY,radio,f.centroX,f.centroY,f.radio);
         if (!col) {
-            Log.d(":::Colion","If");
+            //Log.d(":::Colion","If");
             activa=true;
         }
         return col;
@@ -80,21 +83,27 @@ public class Bola extends Sprite implements OnColisionListener {
     @Override
     public void onColisionEvent(Sprite s) {
         if (s instanceof Ficha) {
-            Log.d(":::OnColisionEvent","If 1");
             if(activa){
-                Log.d(":::OnColisionEvent","If 2");
-                Bola b=(Bola)s;
-                float dy=(float)(b.centroY-centroY);
-                float dx=(float)(b.centroX-centroX);
+                Ficha f=(Ficha)s;
+                if (centroX>f.centroX)
+                    recolocaX((f.radio+radio-(centroX-f.centroX)));
+                else
+                    recolocaX(-1*(f.radio+radio-(f.centroX-centroX)));
+                if (centroY>f.centroY)
+                    recolocaY((f.radio+radio-(centroY-f.centroY)));
+                else
+                    recolocaY(-1*(f.radio+radio-(f.centroY-centroY)));
+                float dy=(float)(f.centroY-centroY);
+                float dx=(float)(f.centroX-centroX);
                 float ang=(float)Math.atan2(dy,dx);
                 double cosa=Math.cos(ang);
                 double sina=Math.sin(ang);
-                float vx2=(float)(cosa*b.velActualX+sina*b.velActualY);
-                float vy1=(float)(cosa*b.velActualY-sina*b.velActualX);
+                float vx2=(float)(cosa*f.velActualX+sina*f.velActualY);
+                float vy1=(float)(cosa*f.velActualY-sina*f.velActualX);
                 float vx1=(float)(cosa*velActualX+sina*velActualY);
                 float vy2=(float)(cosa*velActualY-sina*velActualX);
-                b.velActualX=(float)(cosa*vx1-sina*vy1);
-                b.velActualY=(float)(cosa*vy1+sina*vx1);
+                f.velActualX=(float)(cosa*vx1-sina*vy1);
+                f.velActualY=(float)(cosa*vy1+sina*vx1);
                 velActualX=(float)(cosa*vx2-sina*vy2);
                 velActualY=(float)(cosa*vy2+sina*vx2);
             }
@@ -128,5 +137,19 @@ public class Bola extends Sprite implements OnColisionListener {
     public  void pinta(Canvas canvas){
         paint.setColor(this.color);
         canvas.drawCircle(centroX,centroY,radio,paint);
+    }
+
+    @Override
+    public void recolocaX(float x) {
+        Log.d(":::CentroX",x+"");
+        centroX=(float)(centroX+x);
+        Log.d(":::CentroX",centroX+"");
+    }
+
+    @Override
+    public void recolocaY(float y) {
+        Log.d(":::CentroY",y+"");
+        centroY=(float)(centroY+y);
+        Log.d(":::CentroY",centroY+"");
     }
 }

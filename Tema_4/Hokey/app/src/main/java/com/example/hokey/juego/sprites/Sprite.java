@@ -96,6 +96,7 @@ public abstract class Sprite implements OnColisionListener {
     }
 
     public  void onFireColisionSprite(){
+        //Log.d(":::OnFireColision","Pasa");
         for (Sprite objeto : GameView.actores) {
             if (!objeto.equals(this)) {
                 if (objeto.isVisible() && colision(objeto))
@@ -108,9 +109,8 @@ public abstract class Sprite implements OnColisionListener {
 
     public  abstract void pinta(Canvas canvas);
 
-    public void recolocaX(float x) {
-    }
-    public void recolocaY(float y){ }
+    public abstract void recolocaX(float x);
+    public abstract void recolocaY(float y);
     public void recolocaXY(float x,float y){ }
 
     public abstract void setup();

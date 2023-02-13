@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 
 import com.example.hokey.juego.sprites.Bola;
 import com.example.hokey.juego.sprites.Ficha;
+import com.example.hokey.juego.sprites.Sprite;
 
 public class Hokey extends GameView implements OnTouchEventListener{
 
@@ -43,7 +44,10 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     @Override
     protected void actualiza() {
-
+        for (Sprite actor : actores) {
+            if(actor.isVisible())
+                actor.update();
+        }
     }
 
     @Override
@@ -232,7 +236,7 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
         disco=new Bola(this,getmScreenX()/2,getmScreenY()/2,100,Color.RED);
 
-        actores.add(ficha1);
+        actores.add(ficha1); disco.setup();
         actores.add(ficha2);
         actores.add(disco);
     }

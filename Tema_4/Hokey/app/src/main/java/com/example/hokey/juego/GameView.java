@@ -9,6 +9,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
+import com.example.hokey.juego.sprites.Bola;
+import com.example.hokey.juego.sprites.Ficha;
 import com.example.hokey.juego.sprites.Sprite;
 
 import java.util.LinkedList;
@@ -119,15 +121,16 @@ public abstract class GameView extends SurfaceView implements Runnable {
     }
 
     public  void onFireColision(){
+        //Log.d(":::OnFireColision","Entra");
         for (int i=0;i<actores.size()-1;i++) {
             if (actores.get(i).isVisible()) {
                 Sprite actor = actores.get(i);
-                for (int j = 0; j < actores.size()-1; j++) {
-                    if (!(actores.get(j)==actor)){
-                        if (actores.get(j).isVisible() && actor.colision(actores.get(j))){
-                            Log.d(":::OnFireColision","If 2");
-                            actor.onColisionEvent(actores.get(j));
-                        }
+                //Log.d(":::OnFireColision","If 2");
+                if (actores.get(i) instanceof Ficha){
+                    //Log.d(":::OnFireColision","If 2");
+                    if (actor.colision(actores.get(2))){
+                        //Log.d(":::OnFireColision","If 3");
+                        actores.get(2).onColisionEvent(actor);
                     }
                 }
             }

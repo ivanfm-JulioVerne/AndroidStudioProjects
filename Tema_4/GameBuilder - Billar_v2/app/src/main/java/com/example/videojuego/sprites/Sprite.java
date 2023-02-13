@@ -2,6 +2,7 @@ package com.example.videojuego.sprites;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 import com.example.videojuego.GameView;
 import com.example.videojuego.OnColisionListener;
@@ -95,6 +96,7 @@ public abstract class Sprite implements OnColisionListener {
     }
 
     public  void onFireColisionSprite(){
+        Log.d(":::OnFireColisionSprite","Entra");
         for (Sprite objeto : GameView.actores) {
             if (!objeto.equals(this)) {
                 if (objeto.isVisible() && colision(objeto))

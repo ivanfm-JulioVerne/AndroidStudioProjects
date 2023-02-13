@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.hokey.juego.GameView;
 import com.example.hokey.juego.Hokey;
 import com.example.hokey.juego.OnColisionListener;
+import com.example.hokey.juego.Utilidades;
 
 public class Ficha extends Sprite implements OnColisionListener {
 
@@ -13,6 +14,7 @@ public class Ficha extends Sprite implements OnColisionListener {
     public float centroX,centroY,radio;
     public boolean activa=true;
     public boolean tocado;
+    public float centroXOrigen,centroYOrigen;
 
     public int idInput;
 
@@ -28,7 +30,7 @@ public class Ficha extends Sprite implements OnColisionListener {
 
     @Override
     public void onColisionEvent(Sprite s) {
-
+        Log.d(":::OnColisionEvent Ficha","Entra");
     }
 
     @Override
@@ -43,8 +45,14 @@ public class Ficha extends Sprite implements OnColisionListener {
 
     @Override
     public boolean colision(Sprite s) {
-        Log.d(":::Ficha","osiahf");
-        return false;
+        //Log.d(":::Colision","Entra");
+        Bola b=(Bola)s;
+        boolean col= Utilidades.colisionCirculos(centroX,centroY,radio,b.centroX,b.centroY,b.radio);
+        if (!col) {
+            //Log.d(":::Colion","If");
+            activa=true;
+        }
+        return col;
     }
 
     @Override
@@ -54,12 +62,26 @@ public class Ficha extends Sprite implements OnColisionListener {
     }
 
     @Override
+    public void recolocaX(float x) {
+
+    }
+
+    @Override
+    public void recolocaY(float y) {
+
+    }
+
+    @Override
     public void setup() {
 
     }
 
     @Override
     public void update() {
+        velActualX=1.5f*(centroX-centroXOrigen);
+        velActualY=1.5f*(centroY-centroYOrigen);
 
+        centroXOrigen=centroX;
+        centroYOrigen=centroY;
     }
 }
