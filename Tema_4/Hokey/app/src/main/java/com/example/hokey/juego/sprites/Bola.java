@@ -85,14 +85,7 @@ public class Bola extends Sprite implements OnColisionListener {
         if (s instanceof Ficha) {
             if(activa){
                 Ficha f=(Ficha)s;
-                if (centroX>f.centroX)
-                    recolocaX((f.radio+radio-(centroX-f.centroX)));
-                else
-                    recolocaX(-1*(f.radio+radio-(f.centroX-centroX)));
-                if (centroY>f.centroY)
-                    recolocaY((f.radio+radio-(centroY-f.centroY)));
-                else
-                    recolocaY(-1*(f.radio+radio-(f.centroY-centroY)));
+
                 float dy=(float)(f.centroY-centroY);
                 float dx=(float)(f.centroX-centroX);
                 float ang=(float)Math.atan2(dy,dx);
@@ -106,6 +99,20 @@ public class Bola extends Sprite implements OnColisionListener {
                 f.velActualY=(float)(cosa*vy1+sina*vx1);
                 velActualX=(float)(cosa*vx2-sina*vy2);
                 velActualY=(float)(cosa*vy2+sina*vx2);
+                //Condicion de que no haga falta
+                if (centroX>f.centroX && 0>(centroX-f.centroX))
+                    recolocaX(1*((f.radio+radio)-(centroX-f.centroX)));
+                else if(0>(f.centroX-centroX))
+                    recolocaX(-1*((f.radio+radio)-(f.centroX-centroX)));
+                if (centroY>f.centroY && 0>(centroY - f.centroY)) {
+                    float incremento= 1* ((f.radio + radio) - (centroY - f.centroY));
+                    recolocaY(incremento);
+                }
+                else{
+                    float incremento=-1*((f.radio+radio)-(f.centroY-centroY));
+                    recolocaY(incremento);
+                }
+
             }
         }
     }
@@ -117,15 +124,19 @@ public class Bola extends Sprite implements OnColisionListener {
         switch (border){
             case OnColisionListener.TOP:
                 velActualY=-velActualY;
+                centroY=100;
                 break;
             case OnColisionListener.BOTTOM:
                 velActualY=-velActualY;
+                centroY= game.getmScreenY()-100;
                 break;
             case OnColisionListener.RIGHT:
                 velActualX=-velActualX;
+                centroX=game.getmScreenX()-100;
                 break;
             case OnColisionListener.LEFT:
                 velActualX=-velActualX;
+                centroX=100;
                 break;
             default:
 
@@ -141,14 +152,16 @@ public class Bola extends Sprite implements OnColisionListener {
 
     @Override
     public void recolocaX(float x) {
-        Log.d(":::CentroX",x+"");
+        Log.d(":::DesplacamientoX",x+"");
+        Log.d(":::CentroX",centroX+"");
         centroX=(float)(centroX+x);
         Log.d(":::CentroX",centroX+"");
     }
 
     @Override
     public void recolocaY(float y) {
-        Log.d(":::CentroY",y+"");
+        Log.d(":::DesplacamientoY",y+"");
+        Log.d(":::CentroY",centroY+"");
         centroY=(float)(centroY+y);
         Log.d(":::CentroY",centroY+"");
     }
