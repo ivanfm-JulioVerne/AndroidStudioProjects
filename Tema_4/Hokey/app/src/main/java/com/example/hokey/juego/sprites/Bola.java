@@ -99,20 +99,33 @@ public class Bola extends Sprite implements OnColisionListener {
                 f.velActualY=(float)(cosa*vy1+sina*vx1);
                 velActualX=(float)(cosa*vx2-sina*vy2);
                 velActualY=(float)(cosa*vy2+sina*vx2);
-                //Condicion de que no haga falta
-                if (centroX>f.centroX && 0>(centroX-f.centroX))
-                    recolocaX(1*((f.radio+radio)-(centroX-f.centroX)));
-                else if(0>(f.centroX-centroX))
-                    recolocaX(-1*((f.radio+radio)-(f.centroX-centroX)));
+                float despX=0;
+                float despY=0;
+                if (centroX>f.centroX){
+                    despX=(float)(1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang));
+                }
+                else if(centroX<f.centroX)
+                    despX=(float)(-1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang));
+                if (centroY>f.centroY) {
+                    despY= (float) (1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY))*Math.sin(ang)));
+                }
+                else if (centroY<f.centroY){
+                    despY=(float) (-1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY))*Math.sin(ang)));
+                }
+                recolocaX(despX);
+                recolocaY(despY);
+                /*if (centroX>f.centroX && 0>(centroX-f.centroX))
+                    recolocaX(50);
+                else if(centroX<f.centroX && 0>(f.centroX-centroX))
+                    recolocaX(-50);
                 if (centroY>f.centroY && 0>(centroY - f.centroY)) {
-                    float incremento= 1* ((f.radio + radio) - (centroY - f.centroY));
+                    float incremento= (float) (50);
                     recolocaY(incremento);
                 }
-                else{
-                    float incremento=-1*((f.radio+radio)-(f.centroY-centroY));
+                else if (centroY<f.centroY && 0>(centroY - f.centroY)) {
+                    float incremento = (float) (-50);
                     recolocaY(incremento);
-                }
-
+                }*/
             }
         }
     }
