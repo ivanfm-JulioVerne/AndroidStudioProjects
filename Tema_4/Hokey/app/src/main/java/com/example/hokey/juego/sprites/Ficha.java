@@ -26,6 +26,8 @@ public class Ficha extends Sprite implements OnColisionListener {
         this.radio = radio;
         this.color=color;
         this.idInput= -1;
+        this.velActualX=0;
+        this.velActualY=0;
     }
 
     @Override
@@ -78,8 +80,10 @@ public class Ficha extends Sprite implements OnColisionListener {
 
     @Override
     public void update() {
-        velActualX=1.5f*(centroX-centroXOrigen);
-        velActualY=1.5f*(centroY-centroYOrigen);
+        if((centroX-centroXOrigen)!=0)
+            velActualX=(centroX-centroXOrigen);
+        if((centroY-centroYOrigen)!=0)
+            velActualY=(centroY-centroYOrigen);
 
         centroXOrigen=centroX;
         centroYOrigen=centroY;

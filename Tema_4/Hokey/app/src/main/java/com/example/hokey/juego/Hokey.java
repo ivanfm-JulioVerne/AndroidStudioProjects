@@ -16,12 +16,16 @@ public class Hokey extends GameView implements OnTouchEventListener{
 
     Ficha ficha1,ficha2;
 
+    Jugador jugador1,jugador2;
+
     Bola disco;
 
     public Hokey(Context context, int x, int y) {
         super(context, x, y);
         addOnTouchEventListener(this);
         setupGame();
+        jugador1=new Jugador("Jugador 1");
+        jugador2=new Jugador("Jugador 2");
     }
 
     @Override

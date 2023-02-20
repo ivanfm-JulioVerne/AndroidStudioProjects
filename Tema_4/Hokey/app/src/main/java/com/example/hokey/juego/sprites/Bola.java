@@ -95,23 +95,28 @@ public class Bola extends Sprite implements OnColisionListener {
                 float vy1=(float)(cosa*f.velActualY-sina*f.velActualX);
                 float vx1=(float)(cosa*velActualX+sina*velActualY);
                 float vy2=(float)(cosa*velActualY-sina*velActualX);
-                f.velActualX=(float)(cosa*vx1-sina*vy1);
-                f.velActualY=(float)(cosa*vy1+sina*vx1);
                 velActualX=(float)(cosa*vx2-sina*vy2);
                 velActualY=(float)(cosa*vy2+sina*vx2);
                 float despX=0;
                 float despY=0;
-                if (centroX>f.centroX){
-                    despX=(float)(1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang));
+                Log.d(":::Distancia",""+Utilidades.distancia(centroX,centroY,f.centroX,f.centroY));
+                Log.d(":::Angulo",""+Math.toDegrees(ang));
+                Log.d(":::Seno Angulo",""+Math.sin(ang));
+                Log.d(":::Suma Radios",""+(f.radio+radio));
+                Log.d(":::CalculoY",""+((((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.sin(ang))));
+                if (centroX>f.centroX && 0<(centroX-f.centroX)){
+                    despX=(float)(1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang)+1);
                 }
-                else if(centroX<f.centroX)
-                    despX=(float)(-1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang));
-                if (centroY>f.centroY) {
-                    despY= (float) (1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY))*Math.sin(ang)));
+                else if(centroX<f.centroX && 0<(f.centroX-centroX))
+                    despX=(float)(-1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.cos(ang)-1);
+                if (centroY>f.centroY && 0<(centroY-f.centroY)) {
+                    despY= (float) (1*(((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.sin(ang))+1);
                 }
-                else if (centroY<f.centroY){
-                    despY=(float) (-1*((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY))*Math.sin(ang)));
+                else if (centroY<f.centroY && 0<(f.centroY-centroY)){
+                    despY=(float) (-1*(((f.radio+radio)-(Utilidades.distancia(centroX,centroY,f.centroX,f.centroY)))*Math.sin(ang))-1);
                 }
+                Log.d(":::X",despX+"");
+                Log.d(":::Y",despY+"");
                 recolocaX(despX);
                 recolocaY(despY);
                 /*if (centroX>f.centroX && 0>(centroX-f.centroX))
