@@ -24,12 +24,15 @@ public abstract class Sprite implements OnColisionListener {
     public float getmXCoord() {
         return mXCoord;
     }
+
     public void setmXCoord(float mXCoord) {
         this.mXCoord = mXCoord;
     }
+
     public float getmYCoord() {
         return mYCoord;
     }
+
     public void setmYCoord(float mYCoord) {
         this.mYCoord = mYCoord;
     }
@@ -81,41 +84,47 @@ public abstract class Sprite implements OnColisionListener {
     public GameView getGame() {
         return game;
     }
+
     public void setGame(GameView game) {
         this.game = game;
     }
 
-     public Sprite(GameView game){
-         this.game=game;
-         visible=true;
-         paint=new Paint();
-     }
+    public Sprite(GameView game) {
+        this.game = game;
+        visible = true;
+        paint = new Paint();
+    }
 
     public boolean isVisible() {
         return visible;
     }
 
-    public  void onFireColisionSprite(){
+    public void onFireColisionSprite() {
         //Log.d(":::OnFireColision","Pasa");
         for (Sprite objeto : GameView.actores) {
             if (!objeto.equals(this)) {
                 if (objeto.isVisible() && colision(objeto))
-                   onColisionEvent(objeto);
-                }
+                    onColisionEvent(objeto);
             }
+        }
     }
-    public  abstract void onFireColisionBorder();
+
+    public abstract void onFireColisionBorder();
+
     public abstract boolean colision(Sprite s);
 
-    public  abstract void pinta(Canvas canvas);
+    public abstract void pinta(Canvas canvas);
 
     public abstract void recolocaX(float x);
+
     public abstract void recolocaY(float y);
-    public void recolocaXY(float x,float y){ }
+
+    public void recolocaXY(float x, float y) {
+    }
 
     public abstract void setup();
-    public abstract void update();
 
+    public abstract void update();
 
 
 }

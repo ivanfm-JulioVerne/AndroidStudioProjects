@@ -50,16 +50,16 @@ public abstract class GameView extends SurfaceView implements Runnable {
 
     //Guardar los FPS del videojuego
     long FPS;
-    private long ultimoProceso=0;
-    private static int PERIODO_PROCESO=100;
-    public float factor_mov=1;
+    private long ultimoProceso = 0;
+    private static int PERIODO_PROCESO = 100;
+    public float factor_mov = 1;
     long ahora, tiempo_transcurrido;
 
     OnTouchEventListener listener;
 
-    public static LinkedList<Sprite> actores=new LinkedList<>();
+    public static LinkedList<Sprite> actores = new LinkedList<>();
 
-    int idTurno=0;
+    int idTurno = 0;
 
     public GameView(Context context, int x, int y) {
         super(context);
@@ -84,7 +84,7 @@ public abstract class GameView extends SurfaceView implements Runnable {
         }
     }
 
-    public void update(){
+    public void update() {
         calculaFPS();
         actualiza();
         limpia();
@@ -93,14 +93,14 @@ public abstract class GameView extends SurfaceView implements Runnable {
 
     }
 
-    private void calculaFPS(){
-        ahora=System.currentTimeMillis();       //100000
-        if(ultimoProceso+PERIODO_PROCESO>ahora){   //0+200>100000?? No
+    private void calculaFPS() {
+        ahora = System.currentTimeMillis();       //100000
+        if (ultimoProceso + PERIODO_PROCESO > ahora) {   //0+200>100000?? No
             return;
         }
-        tiempo_transcurrido=ahora-ultimoProceso;  //tiempo_transcurrido=1000000-0
-        factor_mov=(tiempo_transcurrido)/PERIODO_PROCESO; //factor_mov=100000 el primero no es realista
-        ultimoProceso=ahora;
+        tiempo_transcurrido = ahora - ultimoProceso;  //tiempo_transcurrido=1000000-0
+        factor_mov = (tiempo_transcurrido) / PERIODO_PROCESO; //factor_mov=100000 el primero no es realista
+        ultimoProceso = ahora;
     }
 
     //reanuda la partida
@@ -120,15 +120,15 @@ public abstract class GameView extends SurfaceView implements Runnable {
         }
     }
 
-    public  void onFireColision(){
+    public void onFireColision() {
         //Log.d(":::OnFireColision","Entra");
-        for (int i=0;i<actores.size()-1;i++) {
+        for (int i = 0; i < actores.size() - 1; i++) {
             if (actores.get(i).isVisible()) {
                 Sprite actor = actores.get(i);
                 //Log.d(":::OnFireColision","If 2");
-                if (actores.get(i) instanceof Ficha){
+                if (actores.get(i) instanceof Ficha) {
                     //Log.d(":::OnFireColision","If 2");
-                    if (actor.colision(actores.get(2))){
+                    if (actor.colision(actores.get(2))) {
                         //Log.d(":::OnFireColision","If 3");
                         actores.get(2).onColisionEvent(actor);
                     }
@@ -136,13 +136,15 @@ public abstract class GameView extends SurfaceView implements Runnable {
             }
         }
     }
-    synchronized public void limpia(){
-        for (int i=0;i<actores.size();i++)
-            if(!actores.get(i).isVisible()) {
+
+    synchronized public void limpia() {
+        for (int i = 0; i < actores.size(); i++)
+            if (!actores.get(i).isVisible()) {
                 actores.remove(i);
             }
     }
-    public void draw(){
+
+    public void draw() {
         //comprobar si la superficie a pintar es válida
         if (mSurfaceHolder.getSurface().isValid()) {
             //Se empieza a pintar. Hay que bloquear el canvas a pintar
@@ -165,13 +167,13 @@ public abstract class GameView extends SurfaceView implements Runnable {
                 listener.ejecutaActionUp1(event);
                 break;
             case MotionEvent.ACTION_MOVE:
-                idTurno=listener.ejecutaMove(event,idTurno);
+                idTurno = listener.ejecutaMove(event, idTurno);
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                listener.ejecutaActionDown2(event,event.getActionIndex());
+                listener.ejecutaActionDown2(event, event.getActionIndex());
                 break;
             case MotionEvent.ACTION_POINTER_UP:
-                listener.ejecutaActionUp2(event,event.getActionIndex());
+                listener.ejecutaActionUp2(event, event.getActionIndex());
 
                 break;
         }
@@ -179,6 +181,7 @@ public abstract class GameView extends SurfaceView implements Runnable {
     }
 
     public abstract void dibuja(Canvas canvas);
+
     protected abstract void actualiza();
 
 }
