@@ -72,10 +72,22 @@ public class Hokey extends GameView implements OnTouchEventListener {
         paint.setColor(Color.BLACK);
         paint.setTextSize(100);
         canvas.rotate(-90);
-        if (ganador1) {
-            canvas.drawText("GANA LAS AMARILLAS", getmScreenX() / 50, getmScreenY() / 2 + 25, paint);
-        } else if (ganador2) {
-            canvas.drawText("GANA LAS AZULES", getmScreenX() / 10, getmScreenY() / 2 + 25, paint);
+        if(ganador1 || ganador2){
+            paint.setStyle(Paint.Style.STROKE);
+            canvas.drawRect(200,getmScreenY()/3,getmScreenX()-200,getmScreenY()/3+getmScreenY()/3,paint);
+            paint.setStyle(Paint.Style.FILL);
+            paint.setColor(Color.WHITE);
+            canvas.drawRect(200,getmScreenY()/3,getmScreenX()-200,getmScreenY()/3+getmScreenY()/3,paint);
+            paint.setColor(Color.BLACK);
+            canvas.drawText("GANADOR:", 290, getmScreenY() / 2 -280, paint);
+            if (ganador1) {
+                canvas.drawText("AMARILLAS", 265, getmScreenY() / 2 -160, paint);
+            } else if (ganador2) {
+                canvas.drawText("AZULES", 360, getmScreenY() / 2 -160, paint);
+            }
+            paint.setTextSize(50);
+            canvas.drawText("Pulsa la pantalla", 350, getmScreenY() / 2+200, paint);
+            canvas.drawText("volver a jugar", 390, getmScreenY() / 2+310, paint);
         }
     }
 
@@ -103,6 +115,11 @@ public class Hokey extends GameView implements OnTouchEventListener {
                 ficha2.tocado = true;
                 ficha2.idInput = idInput;
             }
+        }else{
+            ganador2=false;
+            ganador1=false;
+            puntoJ1 = 0;
+            puntoJ2 = 0;
         }
         return idInput;
 
