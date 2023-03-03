@@ -2,8 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/colocarLogLat"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="ColocarLogLat"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/distRumbo"
+        android:orderInCategory="100"
+        android:title="Dist-Rumbo"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mostrarUbi"
+        android:orderInCategory="100"
+        android:title="Mostrar Ubicacion"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/borrarPosicion"
+        android:orderInCategory="100"
+        android:title="Borrar Posicion"
         app:showAsAction="never" />
 </menu>
