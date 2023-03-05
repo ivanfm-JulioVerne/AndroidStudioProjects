@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/crearDietas">
+
+    <fragment
+        android:id="@+id/crearDietas"
+        android:name="com.example.repaso_examen_rec.ui.gestion.crearDietas.CrearDietas"
+        android:label="fragment_crear_dietas"
+        tools:layout="@layout/fragment_crear_dietas" >
+        <action
+            android:id="@+id/action_crearDietas_to_verDiertas"
+            app:destination="@id/verDiertas" />
+    </fragment>
+    <fragment
+        android:id="@+id/verDiertas"
+        android:name="com.example.repaso_examen_rec.ui.gestion.verDietas.VerDiertas"
+        android:label="fragment_ver_diertas"
+        tools:layout="@layout/fragment_ver_diertas" >
+        <action
+            android:id="@+id/action_verDiertas_to_crearDietas"
+            app:destination="@id/crearDietas" />
+    </fragment>
+</navigation>
