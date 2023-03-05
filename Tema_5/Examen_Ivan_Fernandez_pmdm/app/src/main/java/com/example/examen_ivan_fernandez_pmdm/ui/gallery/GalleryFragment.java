@@ -80,35 +80,27 @@ public class GalleryFragment extends Fragment implements OnMapReadyCallback{
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //previa = new LatLng(-34, 151);
+
+        //Ejercicio_2
+        map.addMarker(new MarkerOptions().position(new LatLng(53.499424,1.873112)).title("Posicion Recibida"));
+
+        //Ejercicio_3
+        LatLng destino=SphericalUtil.computeOffset(new LatLng(53.499424,1.873112),370000,300);
+        map.addMarker(new MarkerOptions().position(destino).title("Destino"));
+
+        //Ejercicio_4
         obtenerPosicion();
         map.addMarker(new MarkerOptions().position(previa).title("Tu Ubicacion"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(previa));
+        map.addMarker(new MarkerOptions().position(new LatLng(53.499424,1.873112)).title("Posicion Recibida"));
+        posiciones.add(new LatLng(53.499424,1.873112));
+        posiciones.add(destino);
         posiciones.add(previa);
-        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng ultima) {
-                map.clear(); // Limpiar marcadores previos
-                posiciones.add(ultima);
-                if (ultima != null) {
-                    distancia = SphericalUtil.computeDistanceBetween(ultima, previa);
-                    distancia /= 1000;
-                    distanciaTotal += distancia;
-                    double rumbo=SphericalUtil.computeHeading(previa, ultima);
-                    if (rumbo<0)rumbo+=360;
-                    previa = ultima;
-                    MarkerOptions markerOptions = new MarkerOptions().position(ultima);
-                    map.addMarker(markerOptions);
+        PolylineOptions polylineOptions = new PolylineOptions().addAll(posiciones).color(Color.RED);
+        map.addPolyline(polylineOptions);
 
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String distanciaFormat = df.format(distancia);
-
-                    Toast.makeText(getContext(), "Distancia: " + distanciaFormat+ "Rumbo: "+rumbo, Toast.LENGTH_SHORT).show();
-
-                    PolylineOptions polylineOptions = new PolylineOptions().addAll(posiciones).color(Color.RED);
-                    map.addPolyline(polylineOptions);
-                }
-            }
-        });
+        //Ejercicio_5
+        //Esta comentado para que se pueda ver los anteriores ejercicios
+        //map.clear();
     }
     //@SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(provider);
     private void obtenerPosicion() {
@@ -153,20 +145,5 @@ public class GalleryFragment extends Fragment implements OnMapReadyCallback{
                 previa = new LatLng(-34, 151);
             }
         }
-
-
-        //Obtenemos la primera localización que nos sirve de referencia
-
-
     }
-
-    /*
-    private void obtenerPermisos() {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
-            return;
-        }
-
- */
 }

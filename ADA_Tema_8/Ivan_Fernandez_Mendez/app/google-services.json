@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "465651058003",
+    "project_id": "rutapp-ef676",
+    "storage_bucket": "rutapp-ef676.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465651058003:android:8e7523e2f48217a244cda6",
+        "android_client_info": {
+          "package_name": "com.example.ivan_fernandez_mendez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465651058003-c82b9m0hjr4og04de3h12ijoqim8ll4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1Xt6iHmsH6E3UujQ1Fr16HGMj5lnpK2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465651058003-c82b9m0hjr4og04de3h12ijoqim8ll4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465651058003:android:477f94c71a93621c44cda6",
+        "android_client_info": {
+          "package_name": "com.example.practicarutappfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465651058003-c82b9m0hjr4og04de3h12ijoqim8ll4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1Xt6iHmsH6E3UujQ1Fr16HGMj5lnpK2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465651058003-c82b9m0hjr4og04de3h12ijoqim8ll4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
