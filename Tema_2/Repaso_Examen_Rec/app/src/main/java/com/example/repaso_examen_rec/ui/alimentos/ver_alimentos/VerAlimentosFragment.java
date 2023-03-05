@@ -36,7 +36,7 @@ public class VerAlimentosFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding= FragmentVerAlimentosBinding.inflate(inflater,container,false);
         View root=binding.getRoot();
-
+        //RecyclerView recyclerView=binding.reciclerViewAlimento;
         RecyclerView recyclerView=(RecyclerView) root.findViewById(R.id.reciclerViewAlimento);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setAdapter(new VerAlimentosAdapter(((MainActivity)this.getActivity()).getAlimentos()));
