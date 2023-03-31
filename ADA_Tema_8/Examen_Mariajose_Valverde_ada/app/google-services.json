@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "964924993913",
+    "project_id": "rutabd-69841",
+    "storage_bucket": "rutabd-69841.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964924993913:android:965cf8351c90e116f4bfa8",
+        "android_client_info": {
+          "package_name": "com.example.examen_mariajose_valverde_ada"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxSvClNDK20VULCn147S2vigapszZXDHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964924993913:android:b896fc206cdd2923f4bfa8",
+        "android_client_info": {
+          "package_name": "com.example.pochogame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxSvClNDK20VULCn147S2vigapszZXDHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964924993913:android:1bba3a919bd20ec3f4bfa8",
+        "android_client_info": {
+          "package_name": "com.example.probargestionrutasfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxSvClNDK20VULCn147S2vigapszZXDHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964924993913:android:2bb81245773607a7f4bfa8",
+        "android_client_info": {
+          "package_name": "com.example.prueba_firestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxSvClNDK20VULCn147S2vigapszZXDHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964924993913-ocpmkfgg3pqf0hepm1sjgjk6vm9q1fui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

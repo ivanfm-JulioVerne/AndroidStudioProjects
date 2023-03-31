@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "953129217038",
+    "project_id": "minichef-cf909",
+    "storage_bucket": "minichef-cf909.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953129217038:android:851f507c1216cfe979a05f",
+        "android_client_info": {
+          "package_name": "com.example.minichef_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953129217038-n7n9b66kkecnrvr425dcoqqde833vfa9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKx_bySPCw49T9m4IAiJ0xsAwODBBXdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953129217038-n7n9b66kkecnrvr425dcoqqde833vfa9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
