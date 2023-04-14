@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/noAuth">
+    <fragment
+        android:id="@+id/noAuth"
+        android:name="com.example.minichef_v1.auth.NoAuth"
+        android:label="fragment_no_auth"
+        tools:layout="@layout/fragment_no_auth" >
+        <action
+            android:id="@+id/action_noAuth_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_noAuth_to_signin"
+            app:destination="@id/signin" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.minichef_v1.auth.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_signin"
+            app:destination="@id/signin" />
+    </fragment>
+    <fragment
+        android:id="@+id/signin"
+        android:name="com.example.minichef_v1.auth.Signin"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin" >
+        <action
+            android:id="@+id/action_signin_to_login"
+            app:destination="@id/login" />
+    </fragment>
+</navigation>

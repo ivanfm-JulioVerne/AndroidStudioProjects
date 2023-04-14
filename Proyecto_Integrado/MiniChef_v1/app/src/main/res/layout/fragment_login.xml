@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.Login"
     android:theme="@style/Theme.MiniChef_v1"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <EditText
         android:id="@+id/emailLoginEditText"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
@@ -17,11 +19,11 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="8dp" />
 
     <EditText
         android:id="@+id/passwordLoginEditText"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Contraseña"
@@ -29,22 +31,38 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="8dp" />
 
     <Button
         android:id="@+id/bLoginLogin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesion" />
+        android:text="Iniciar Sesion"
+        android:textAllCaps="false"
+        app:cornerRadius="50dp" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="8dp" />
 
     <Button
         android:id="@+id/bLoginSignin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registrase" />
+        android:text="Registrase"
+        android:textAllCaps="false"
+        app:cornerRadius="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="8dp" />
+
+    <Button
+        android:id="@+id/bLoginSignin2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Google"
+        android:textAllCaps="false"
+        app:cornerRadius="50dp" />
 
 </LinearLayout>
