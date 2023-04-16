@@ -8,5 +8,15 @@
     tools:context=".AuthActivity"
     android:background="#FCF2DB">
 
-    <include layout="@layout/content_auth"></include>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/auth_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

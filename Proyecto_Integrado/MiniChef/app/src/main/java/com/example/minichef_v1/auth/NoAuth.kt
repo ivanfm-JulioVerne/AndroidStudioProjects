@@ -7,35 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import com.example.minichef_v1.AuthActivity
+import androidx.navigation.findNavController
 import com.example.minichef_v1.R
-import com.example.minichef_v1.databinding.FragmentLoginBinding
+import com.example.minichef_v1.databinding.FragmentNoAuthBinding
 
-class Login : Fragment() {
+class NoAuth : Fragment() {
 
-    private var _binding:FragmentLoginBinding?=null
-
+    private var _binding:FragmentNoAuthBinding?=null;
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding=FragmentNoAuthBinding.inflate(inflater,container,false);
+        val root=binding.root;
 
-        _binding= FragmentLoginBinding.inflate(inflater,container,false)
-        val root:View=binding.root
-
-        val bRegistro: Button = binding.bLoginSignin
-        bRegistro.setOnClickListener {v ->
-            findNavController().navigate(R.id.action_login_to_signin)
+        val bLogin:Button=binding.bLoginEmail
+        bLogin.setOnClickListener {v ->
+            v.findNavController().navigate(R.id.action_noAuth_to_login)
         }
-        val bLogin:Button= binding.bLoginLogin
-        bLogin.setOnClickListener { 
+        val bRegistro:Button=binding.bRegEmail
+        bRegistro.setOnClickListener { v->
+            v.findNavController().navigate(R.id.action_noAuth_to_signin)
         }
 
         // Inflate the layout for this fragment
