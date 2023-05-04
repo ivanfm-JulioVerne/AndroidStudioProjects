@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">MiniChef</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Nueva Publicación</string>
+    <string name="title_notifications">Perfil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="categorias">
+        <item>Vegano</item>
+        <item>Postre</item>
+        <item>Barbacoa</item>
+        <item>Sano</item>
+        <item>Picante</item>
+        <item>Fácil</item>
+    </string-array>
 </resources>

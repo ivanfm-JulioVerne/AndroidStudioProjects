@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_noAuth_to_signin"
             app:destination="@id/signin" />
+        <action
+            android:id="@+id/action_noAuth_to_nuevoUsuarioGoogle"
+            app:destination="@id/nuevoUsuarioGoogle" />
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -33,5 +36,14 @@
         <action
             android:id="@+id/action_signin_to_login"
             app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoUsuarioGoogle"
+        android:name="com.example.minichef_v1.auth.NuevoUsuarioGoogle"
+        android:label="fragment_nuevo_usuario_google"
+        tools:layout="@layout/fragment_nuevo_usuario_google" >
+        <action
+            android:id="@+id/action_nuevoUsuarioGoogle_to_noAuth"
+            app:destination="@id/noAuth" />
     </fragment>
 </navigation>

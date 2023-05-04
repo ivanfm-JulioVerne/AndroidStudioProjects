@@ -9,6 +9,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo" />
+
     <Button
         android:id="@+id/bLoginEmail"
         android:layout_width="350dp"
@@ -40,4 +46,9 @@
         android:text="Iniciar Sesión con Google"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
 </LinearLayout>

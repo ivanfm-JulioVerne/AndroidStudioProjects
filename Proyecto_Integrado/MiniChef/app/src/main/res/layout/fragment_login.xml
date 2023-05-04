@@ -10,7 +10,7 @@
     android:gravity="center">
 
     <EditText
-        android:id="@+id/emailLoginEditText"
+        android:id="@+id/editTextEmailLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -22,7 +22,7 @@
         android:layout_height="8dp" />
 
     <EditText
-        android:id="@+id/passwordLoginEditText"
+        android:id="@+id/editTextPasswordLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"

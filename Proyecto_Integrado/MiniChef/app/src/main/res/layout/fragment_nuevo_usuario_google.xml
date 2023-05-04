@@ -6,49 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".auth.Signin">
+    tools:context=".auth.NuevoUsuarioGoogle">
 
     <EditText
-        android:id="@+id/editTextEmailReg"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#000000" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <EditText
-        android:id="@+id/editTextPasswordReg"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="contraseña"
-        android:inputType="textPassword"
-        android:textColorHint="#000000" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <EditText
-        android:id="@+id/editTextPasswordReg2"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="confirmar contraseña"
-        android:inputType="textPassword"
-        android:textColorHint="#000000" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <EditText
-        android:id="@+id/editTextNickname"
+        android:id="@+id/editTextNicknameGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -61,7 +22,7 @@
         android:layout_height="10dp" />
 
     <EditText
-        android:id="@+id/editTextNombre"
+        android:id="@+id/editTextNombreGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -74,7 +35,7 @@
         android:layout_height="10dp" />
 
     <EditText
-        android:id="@+id/editTextBiografia"
+        android:id="@+id/editTextBiografiaGoogle"
         android:layout_width="350dp"
         android:layout_height="100dp"
         android:ems="10"
@@ -84,18 +45,18 @@
         android:textColorHint="#000000" />
 
     <Button
-        android:id="@+id/bRegSignin"
+        android:id="@+id/bRegGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registro"
+        android:text="Registrar"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
     <Button
-        android:id="@+id/bLoginSignin"
+        android:id="@+id/bCancelarGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Ir a inicio de sesion"
+        android:text="Cancelar"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
