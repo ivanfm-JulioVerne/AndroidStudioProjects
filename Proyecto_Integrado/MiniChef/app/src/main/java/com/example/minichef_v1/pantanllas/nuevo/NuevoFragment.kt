@@ -1,8 +1,12 @@
 package com.example.minichef_v1.pantanllas.nuevo
 
 import android.app.ActionBar.LayoutParams
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +14,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.drawToBitmap
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +32,10 @@ import com.example.minichef_v1.databinding.FragmentNuevoBinding
 class NuevoFragment : Fragment() {
 
     private var _binding: FragmentNuevoBinding? = null
-    private var idxIngrediente:Int=11
-    private var idxPasos:Int=15
+    private var idxIngrediente:Int=10
+    private var idxPasos:Int=14
+    private var imagenReceta:Bitmap?=null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -131,10 +142,31 @@ class NuevoFragment : Fragment() {
                 if (hayPasos && hayIngrediente){
                     DAOPublicacion().crearPublicacion(publicacion,root)
                 }
+                if (imagenReceta!=null){
+                    Log.d(":::La imagen se ha guardado","Sí")
+
+                }else{
+                    Log.d(":::La imagen se ha guardado","No")
+                }
             }
+        }
+        val btncamara:Button=binding.btnCamara
+        btncamara.setOnClickListener {
+            startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
 
         return root
+    }
+
+    private val startForResult=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result: ActivityResult ->
+        if (result.resultCode== Activity.RESULT_OK){
+            val intent=result.data
+            val imageBitmap=intent?.extras?.get("data") as Bitmap
+            val ivFotoReceta=binding.ivFotoReceta
+            imagenReceta=imageBitmap
+            ivFotoReceta.setImageBitmap(imageBitmap)
+        }
     }
 
     override fun onDestroyView() {

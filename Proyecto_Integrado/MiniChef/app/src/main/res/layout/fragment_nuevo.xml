@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="725dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,27 +19,57 @@
             android:gravity="center|top"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_titulo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:ems="10"
-                android:hint="Título"
-                android:inputType="textPersonName"
-                android:textSize="24sp"
-                android:visibility="visible" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/et_descripcion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="Descripción"
-                android:inputType="textMultiLine"
-                android:textSize="24sp" />
+                <ImageView
+                    android:id="@+id/iv_fotoReceta"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="0"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:hint="Título"
+                        android:inputType="textPersonName"
+                        android:textSize="24sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/et_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="Descripción"
+                        android:inputType="textMultiLine"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/btn_camara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="Cámara"
+                        android:textAllCaps="false"
+                        app:cornerRadius="50dp" />
+
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView2"

@@ -83,7 +83,7 @@ class NoAuth : Fragment() {
                     }
                 }
             } catch (e: ApiException){
-                Log.d(":::Error ApiException", e.toString())
+                Log.d(":::Error ApiException", e.toString()+" - "+e.message.toString())
             }
         }
     }
