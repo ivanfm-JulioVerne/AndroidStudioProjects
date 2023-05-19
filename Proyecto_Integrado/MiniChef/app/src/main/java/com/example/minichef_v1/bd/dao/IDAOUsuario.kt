@@ -7,4 +7,10 @@ interface IDAOUsuario {
     fun crearUsuarioNoAdmin(usuario: Usuario)
     fun comprobarUsuarioExiste(id:String,v:View)
     fun getUsuarioByIdFromLogin(id:String,v: View)
+
+    fun anadeNuevaPublicacion(id:String)
+
+    fun anadeNuevaSeguidor(id:String)
+
+    fun anadeNuevaSiguiendo(id:String)
 }

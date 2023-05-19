@@ -70,5 +70,51 @@ class DAOUsuario : IDAOUsuario {
         }
     }
 
+    override fun anadeNuevaPublicacion(id: String) {
+        db.collection("usuario").document(id).get().addOnCompleteListener {
+            if (it.result.exists())
+                db.collection("usuario").document(id).set(
+                    hashMapOf(
+                        "nickname" to it.result.get("nickname") as String,
+                        "nombre" to it.result.get("nombre") as String,
+                        "biografia" to it.result.get("biografia") as String,
+                        "admin" to it.result.get("admin") as Boolean,
+                        "num_seguidores" to it.result.get("num_seguidores") as Long,
+                        "num_siguiendo" to it.result.get("num_siguiendo") as Long,
+                        "num_publicacion" to (it.result.get("num_publicacion") as Long+1)
+                ))
+        }
+    }
 
+    override fun anadeNuevaSeguidor(id: String) {
+        db.collection("usuario").document(id).get().addOnCompleteListener {
+            if (it.result.exists())
+                db.collection("usuario").document(id).set(
+                    hashMapOf(
+                        "nickname" to it.result.get("nickname") as String,
+                        "nombre" to it.result.get("nombre") as String,
+                        "biografia" to it.result.get("biografia") as String,
+                        "admin" to it.result.get("admin") as Boolean,
+                        "num_seguidores" to (it.result.get("num_seguidores") as Long+1),
+                        "num_siguiendo" to it.result.get("num_siguiendo") as Long,
+                        "num_publicacion" to it.result.get("num_publicacion") as Long
+                    ))
+        }
+    }
+
+    override fun anadeNuevaSiguiendo(id: String) {
+        db.collection("usuario").document(id).get().addOnCompleteListener {
+            if (it.result.exists())
+                db.collection("usuario").document(id).set(
+                    hashMapOf(
+                        "nickname" to it.result.get("nickname") as String,
+                        "nombre" to it.result.get("nombre") as String,
+                        "biografia" to it.result.get("biografia") as String,
+                        "admin" to it.result.get("admin") as Boolean,
+                        "num_seguidores" to it.result.get("num_seguidores") as Long,
+                        "num_siguiendo" to (it.result.get("num_siguiendo") as Long+1),
+                        "num_publicacion" to it.result.get("num_publicacion") as Long
+                    ))
+        }
+    }
 }

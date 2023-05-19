@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.bd.modelo.Usuario
 import com.example.minichef_v1.databinding.ActivityMainBinding
 
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     public lateinit var usuario:Usuario
+    var publicacionesHome:List<Publicacion> = emptyList()
+    var publicacionSeleccionada:Publicacion=Publicacion()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
