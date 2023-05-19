@@ -1,18 +1,15 @@
 package com.example.minichef_v1.pantanllas.home.detallePublicacion.rvIngredientes
 
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.minichef_v1.R
 
-class IngredientesViewHolder(private val ingredientes: ArrayList<String>): RecyclerView.Adapter<IngredientesViewHolder>()  {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientesViewHolder {
+class IngredientesViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    var texto=view.findViewById<TextView>(R.id.tv_ingredienteItem)
 
-    }
-
-    override fun getItemCount(): Int {
-
-    }
-
-    override fun onBindViewHolder(holder: IngredientesViewHolder, position: Int) {
-        
+    fun render(ingrediente:String){
+        texto.text=ingrediente
     }
 }
