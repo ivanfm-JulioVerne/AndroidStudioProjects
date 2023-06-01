@@ -21,6 +21,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val extras=this.intent.extras
+        usuario=Usuario(
+            extras!!.getString("idUsuario") ?:"",
+            extras!!.getString("nickname") ?:"",
+            extras!!.getString("nombre") ?:"",
+            extras!!.getString("biografia"),
+            extras!!.getBoolean("admin"),
+            extras!!.getBoolean("baneado"),
+            extras!!.getLong("num_seguidores"),
+            extras!!.getLong("num_siguiendo"),
+            extras!!.getLong("num_publicacion"),
+        )
+
+        if (supportActionBar!=null){
+            this.supportActionBar!!.hide()
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -37,17 +54,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val extras=this.intent.extras
-        usuario=Usuario(
-            extras!!.getString("idUsuario") ?:"",
-            extras!!.getString("nickname") ?:"",
-            extras!!.getString("nombre") ?:"",
-            extras!!.getString("biografia"),
-            extras!!.getBoolean("admin"),
-            extras!!.getLong("num_seguidores"),
-            extras!!.getLong("num_publicacion"),
-            extras!!.getLong("num_siguiendo"),
-        )
-        usuario.print()
+
     }
 }

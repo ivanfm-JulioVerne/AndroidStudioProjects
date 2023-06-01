@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.minichef_v1.AuthActivity
 import com.example.minichef_v1.R
-import com.example.minichef_v1.bd.dao.DAOUsuario
-import com.example.minichef_v1.bd.dao.IDAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.IDAOUsuario
 import com.example.minichef_v1.databinding.FragmentNoAuthBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

@@ -1,6 +1,5 @@
 package com.example.minichef_v1.auth
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,10 +10,9 @@ import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.minichef_v1.AuthActivity
 import com.example.minichef_v1.R
-import com.example.minichef_v1.bd.dao.DAOUsuario
-import com.example.minichef_v1.bd.dao.IDAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.IDAOUsuario
 import com.example.minichef_v1.bd.modelo.Usuario
-import com.example.minichef_v1.databinding.FragmentNoAuthBinding
 import com.example.minichef_v1.databinding.FragmentNuevoUsuarioGoogleBinding
 import com.google.firebase.auth.FirebaseAuth
 

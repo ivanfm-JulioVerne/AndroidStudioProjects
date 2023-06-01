@@ -7,6 +7,33 @@
     tools:context=".pantanllas.home.HomeFragment"
     android:orientation="vertical">
 
+    <SearchView
+        android:id="@+id/sv_buscarPublicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </SearchView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/categoriaBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnBuscarPorCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Buscar" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_publicaciones"
         android:layout_width="match_parent"

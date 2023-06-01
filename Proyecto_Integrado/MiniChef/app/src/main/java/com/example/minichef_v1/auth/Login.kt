@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.example.minichef_v1.AuthActivity
 import com.example.minichef_v1.R
-import com.example.minichef_v1.bd.dao.DAOUsuario
-import com.example.minichef_v1.bd.dao.IDAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
+import com.example.minichef_v1.bd.dao.usuario.IDAOUsuario
 import com.example.minichef_v1.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -45,7 +44,7 @@ class Login : Fragment() {
             ).addOnCompleteListener {
                 if (it.isSuccessful){
                     Log.d(":::Conectado", it.result.user?.uid.toString())
-                    val daoUsuario:IDAOUsuario=DAOUsuario()
+                    val daoUsuario: IDAOUsuario = DAOUsuario()
                     daoUsuario.getUsuarioByIdFromLogin(it.result.user?.uid ?: "",root)
                     //(activity as AuthActivity).goToMainActivity()
                 } else {

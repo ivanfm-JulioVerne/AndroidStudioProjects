@@ -1,4 +1,4 @@
-package com.example.minichef_v1.pantanllas.home.rvPublicaciones
+package com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.rvPublicaciones
 
 import android.util.Log
 import android.view.View
@@ -12,14 +12,13 @@ import com.example.minichef_v1.MainActivity
 import com.example.minichef_v1.R
 import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.pantanllas.home.HomeFragment
+import com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.AutorFragment
 
-class PublicacionesViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class PublicacionesAutorViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
     val titulo=view.findViewById<TextView>(R.id.itemPublicacionTitulo)
     val descripcion=view.findViewById<TextView>(R.id.itemDescripcionPublicacion)
     val imagen=view.findViewById<ImageView>(R.id.itemIvPublicacion)
-    val tvBan=view.findViewById<TextView>(R.id.tv_baneadoItemPublicacion)
-    val view=view
 
     fun render(publicacion: Publicacion){
         titulo.text=publicacion.titulo
@@ -29,17 +28,9 @@ class PublicacionesViewHolder(view: View): RecyclerView.ViewHolder(view) {
             Glide.with(imagen.context).load(publicacion.imagen!!).into(imagen)
         }
 
-        if (publicacion.baneado){
-            tvBan.visibility=View.VISIBLE
-        }else{
-            tvBan.visibility=View.GONE
-        }
-
-
         itemView.setOnClickListener{
-            (view.findFragment<HomeFragment>().activity as MainActivity).publicacionSeleccionada=publicacion
-            view.findNavController().navigate(R.id.action_navigation_home_to_detallePublicacionFragment)
+            (view.findFragment<AutorFragment>().activity as MainActivity).publicacionSeleccionada=publicacion
+            view.findNavController().navigate(R.id.action_autorFragment_to_detallePublicacionFragment)
         }
     }
-
 }

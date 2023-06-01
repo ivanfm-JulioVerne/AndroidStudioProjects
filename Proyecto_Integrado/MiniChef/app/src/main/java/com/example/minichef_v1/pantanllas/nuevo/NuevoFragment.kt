@@ -4,13 +4,10 @@ import android.app.ActionBar.LayoutParams
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -32,8 +29,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.minichef_v1.BuildConfig
 import com.example.minichef_v1.MainActivity
 import com.example.minichef_v1.R
-import com.example.minichef_v1.bd.dao.DAOPublicacion
-import com.example.minichef_v1.bd.dao.DAOUsuario
+import com.example.minichef_v1.bd.dao.publicacion.DAOPublicacion
+import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
 import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.databinding.FragmentNuevoBinding
 import com.google.firebase.storage.FirebaseStorage
@@ -325,7 +322,7 @@ class NuevoFragment : Fragment() {
         val idxBtnIngrediente: Int =binding.linearLayoutPadre.indexOfChild(binding.btnAnadirIngrediente)
         var arreglo:Int=0
         for (i in idxEtIngrediente+1..(idxBtnIngrediente - 1)) {
-            val etIngrediente: EditText = binding.linearLayoutPadre.get(i - 0) as EditText
+            val etIngrediente: EditText = binding.linearLayoutPadre.get(i - arreglo) as EditText
             binding.linearLayoutPadre.removeView(etIngrediente)
             arreglo++
         }

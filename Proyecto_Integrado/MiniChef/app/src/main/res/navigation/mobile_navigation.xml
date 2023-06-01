@@ -25,10 +25,29 @@
         android:id="@+id/navigation_perfil"
         android:name="com.example.minichef_v1.pantanllas.perfil.PerfilFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_navigation_perfil_to_detallePublicacionFragment"
+            app:destination="@id/detallePublicacionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detallePublicacionFragment"
         android:name="com.example.minichef_v1.pantanllas.home.detallePublicacion.DetallePublicacionFragment"
         android:label="fragment_detalle_publicacion"
-        tools:layout="@layout/fragment_detalle_publicacion" />
+        tools:layout="@layout/fragment_detalle_publicacion" >
+        <action
+            android:id="@+id/action_detallePublicacionFragment_to_autorFragment"
+            app:destination="@id/autorFragment" />
+        <action
+            android:id="@+id/action_detallePublicacionFragment_to_navigation_perfil"
+            app:destination="@id/navigation_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/autorFragment"
+        android:name="com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.AutorFragment"
+        android:label="AutorFragment" >
+        <action
+            android:id="@+id/action_autorFragment_to_detallePublicacionFragment"
+            app:destination="@id/detallePublicacionFragment" />
+    </fragment>
 </navigation>

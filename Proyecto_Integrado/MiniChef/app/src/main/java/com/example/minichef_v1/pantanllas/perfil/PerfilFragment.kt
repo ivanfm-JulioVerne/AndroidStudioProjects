@@ -5,17 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.MainActivity
-import com.example.minichef_v1.bd.dao.DAOUsuario
-import com.example.minichef_v1.bd.dao.IDAOUsuario
-import com.example.minichef_v1.bd.modelo.Usuario
+import com.example.minichef_v1.R
+import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.databinding.FragmentPerfilBinding
+import com.example.minichef_v1.pantanllas.perfil.rvPublicaciones.PublicacionesAdapter
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class PerfilFragment : Fragment() {
 
@@ -25,13 +25,13 @@ class PerfilFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val perfilViewModel:PerfilViewModel by viewModels { PerfilViewModelFactory((activity as MainActivity).usuario) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val daoUsuario:IDAOUsuario=DAOUsuario()
 
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -41,10 +41,15 @@ class PerfilFragment : Fragment() {
         val usuario=(activity as MainActivity).usuario
 
         binding.tvNickname.text=usuario.nickname
+        binding.tvNombre.text=usuario.nombre
         binding.tvSeguidores.text="Seguidores\n" + usuario.num_seguidores.toString()
         binding.tvPublicacion.text="Publiciaciones\n" + usuario.num_publicacion.toString()
         binding.tvSiguiendo.text="Siguiendo\n" + usuario.num_siguiendo.toString()
         binding.tvBiografia.text=usuario.biografia
+
+        perfilViewModel.lista.observe(viewLifecycleOwner, Observer {
+            refreshRecyclerView(it,root)
+        })
 
         return root
     }
@@ -52,5 +57,11 @@ class PerfilFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun refreshRecyclerView(publicaciones:List<Publicacion>, view: View){
+        val recyclerView=view.findViewById<RecyclerView>(R.id.rv_publicacionesPerfilPropio)
+        recyclerView.layoutManager= LinearLayoutManager(requireContext())
+        recyclerView.adapter= PublicacionesAdapter(publicaciones)
     }
 }

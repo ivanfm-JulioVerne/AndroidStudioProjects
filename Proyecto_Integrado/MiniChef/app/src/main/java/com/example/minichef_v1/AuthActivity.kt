@@ -17,6 +17,10 @@ class AuthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_auth)
         isStoragePermissionGranted()
 
+        if (supportActionBar!=null){
+            this.supportActionBar!!.hide()
+        }
+
         //supportFragmentManager.beginTransaction().add(R.id.contenedor_auth,NoAuth()).commit();
     }
 
@@ -27,6 +31,7 @@ class AuthActivity : AppCompatActivity() {
         intent.putExtra("nombre",usuario.nombre)
         intent.putExtra("biografia",usuario.biografia)
         intent.putExtra("admin",usuario.admin)
+        intent.putExtra("baneado",usuario.baneado)
         intent.putExtra("num_seguidores",usuario.num_seguidores)
         intent.putExtra("num_publicacion",usuario.num_publicacion)
         intent.putExtra("num_siguiendo",usuario.num_siguiendo)

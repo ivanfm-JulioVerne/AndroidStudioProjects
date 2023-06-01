@@ -17,7 +17,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniChef_v1"
-
         tools:targetApi="31">
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -32,7 +31,8 @@
             android:name=".AuthActivity"
             android:exported="true"
             android:theme="@style/SplashTheme"
-            android:screenOrientation="locked">
+            android:screenOrientation="locked"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,7 +42,8 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:screenOrientation="locked">
+            android:screenOrientation="locked"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
     </application>

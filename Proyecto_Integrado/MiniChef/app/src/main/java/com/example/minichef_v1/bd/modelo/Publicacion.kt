@@ -8,11 +8,12 @@ data class Publicacion(
     var pasos:ArrayList<String>?,
     var imagen:String?,
     var num_likes:Long?,
+    var baneado:Boolean,
     var id_usuario:String?,
     var id_categoria:ArrayList<String>?
 ) {
     constructor() : this(
-        id_publicacion=null, titulo=null, descripcion=null, ingredientes=null, pasos=null, imagen=null, num_likes=0, id_usuario=null, id_categoria=null
+        id_publicacion=null, titulo=null, descripcion=null, ingredientes=null, pasos=null, imagen=null, num_likes=0,baneado=false, id_usuario=null, id_categoria=null
     ) {
 
     }
