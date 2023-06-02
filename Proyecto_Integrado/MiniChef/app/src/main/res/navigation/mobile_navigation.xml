@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_navigation_perfil_to_detallePublicacionFragment"
             app:destination="@id/detallePublicacionFragment" />
+        <action
+            android:id="@+id/action_navigation_perfil_to_editarFragment"
+            app:destination="@id/editarFragment" />
     </fragment>
     <fragment
         android:id="@+id/detallePublicacionFragment"
@@ -49,5 +52,14 @@
         <action
             android:id="@+id/action_autorFragment_to_detallePublicacionFragment"
             app:destination="@id/detallePublicacionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarFragment"
+        android:name="com.example.minichef_v1.pantanllas.perfil.editar.EditarFragment"
+        android:label="fragment_editar"
+        tools:layout="@layout/fragment_editar" >
+        <action
+            android:id="@+id/action_editarFragment_to_navigation_perfil"
+            app:destination="@id/navigation_perfil" />
     </fragment>
 </navigation>

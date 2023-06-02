@@ -41,9 +41,13 @@ class ComentariosViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         btnBanComentario.setOnClickListener {
             if (comentario.baneado){
+                tvBan.visibility=View.VISIBLE
+                btnBanComentario.text="Unbanear"
                 detallePublicacionViewModel.unbanearComentario(comentario.idComentario)
             }else{
                 detallePublicacionViewModel.banearComentario(comentario.idComentario)
+                tvBan.visibility=View.GONE
+                btnBanComentario.text="Banear"
             }
         }
     }

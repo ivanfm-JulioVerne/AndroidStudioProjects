@@ -2,6 +2,7 @@ package com.example.minichef_v1.bd.dao.publicacion
 
 import android.view.View
 import com.example.minichef_v1.bd.modelo.Publicacion
+import com.example.minichef_v1.bd.modelo.Usuario
 import com.example.minichef_v1.pantanllas.home.HomeViewModel
 import com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.AutorViewModel
 import com.example.minichef_v1.pantanllas.perfil.PerfilViewModel
@@ -27,4 +28,6 @@ interface IDAOPublicacion {
     fun unbanPublicacion(id:String)
 
     fun unbanPublicacionesPorUsuario(id:String)
+
+    fun editarUsuario(usuario: Usuario)
 }

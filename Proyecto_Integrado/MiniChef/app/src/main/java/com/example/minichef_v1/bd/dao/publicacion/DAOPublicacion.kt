@@ -29,7 +29,7 @@ class DAOPublicacion: IDAOPublicacion {
     override fun getMasPopulares(homeViewModel: HomeViewModel,admin:Boolean) {
         if (admin) {
             db.orderBy("num_likes").limit(50).get().addOnCompleteListener {
-                if (it.isSuccessful) {
+                if (!it.result.isEmpty) {
                     val publicaciones = mutableListOf<Publicacion>()
                     for (i in 0 until it.result.documents.size) {
                         val result = it.result.documents[i]
@@ -53,30 +53,32 @@ class DAOPublicacion: IDAOPublicacion {
                 }
             }
         }else{
-            db.whereEqualTo("baneado",false).orderBy("num_likes").limit(50).get().addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val publicaciones = mutableListOf<Publicacion>()
-                    for (i in 0 until it.result.documents.size) {
-                        val result = it.result.documents[i]
-                        publicaciones.add(
-                            Publicacion(
-                                result.id,
-                                result.get("titulo") as String,
-                                result.get("descripcion") as String,
-                                result.get("ingredientes") as ArrayList<String>,
-                                result.get("pasos") as ArrayList<String>,
-                                result.get("imagen") as String,
-                                result.get("num_likes") as Long,
-                                result.get("baneado") as Boolean,
-                                result.get("id_usuario") as String,
-                                result.get("id_categoria") as ArrayList<String>
+                db.whereEqualTo("baneado",false).orderBy("num_likes").limit(50).get().addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val publicaciones = mutableListOf<Publicacion>()
+                        for (i in 0 until it.result.documents.size) {
+                            val result = it.result.documents[i]
+                            publicaciones.add(
+                                Publicacion(
+                                    result.id,
+                                    result.get("titulo") as String,
+                                    result.get("descripcion") as String,
+                                    result.get("ingredientes") as ArrayList<String>,
+                                    result.get("pasos") as ArrayList<String>,
+                                    result.get("imagen") as String,
+                                    result.get("num_likes") as Long,
+                                    result.get("baneado") as Boolean,
+                                    result.get("id_usuario") as String,
+                                    result.get("id_categoria") as ArrayList<String>
+                                )
                             )
-                        )
+                        }
+                        publicaciones.reverse()
+                        homeViewModel.setLista(publicaciones)
+                    }else{
+                        Log.d(":::Error",it.exception.toString())
                     }
-                    publicaciones.reverse()
-                    homeViewModel.setLista(publicaciones)
                 }
-            }
         }
     }
 

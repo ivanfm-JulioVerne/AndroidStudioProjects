@@ -78,8 +78,12 @@ class DetallePublicacionFragment : Fragment() {
         binding.btnBorrarDetallePublicacion.setOnClickListener {
             if (publicacion.baneado){
                 detallePublicacionViewModel.unbanearPublicacion(publicacion.id_publicacion!!)
+                binding.tvBaneadoDetallePublicacion.visibility=View.VISIBLE
+                binding.btnBorrarDetallePublicacion.text="Desbanear"
             }else{
                 detallePublicacionViewModel.banearPublicacion(publicacion.id_publicacion!!)
+                binding.tvBaneadoDetallePublicacion.visibility=View.GONE
+                binding.btnBorrarDetallePublicacion.text="Banear"
             }
         }
 

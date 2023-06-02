@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.MainActivity
@@ -39,6 +40,10 @@ class PerfilFragment : Fragment() {
         val idUsaurio=FirebaseAuth.getInstance().currentUser?.uid
         Log.d(":::Perfil",idUsaurio ?: "")
         val usuario=(activity as MainActivity).usuario
+
+        binding.btnEditar.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_perfil_to_editarFragment)
+        }
 
         binding.tvNickname.text=usuario.nickname
         binding.tvNombre.text=usuario.nombre

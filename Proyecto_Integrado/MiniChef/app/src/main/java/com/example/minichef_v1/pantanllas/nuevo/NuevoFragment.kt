@@ -184,6 +184,8 @@ class NuevoFragment : Fragment() {
                         binding.progressBar.visibility=View.GONE
                         limpiarFormulario()
                         DAOUsuario().anadeNuevaPublicacion((activity as MainActivity).usuario.id_usuario)
+                        (activity as MainActivity).usuario.num_publicacion=
+                            (activity as MainActivity).usuario.num_publicacion+1
                     }
                 }
 
