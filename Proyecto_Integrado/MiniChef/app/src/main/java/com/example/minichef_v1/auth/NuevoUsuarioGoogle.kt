@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class NuevoUsuarioGoogle : Fragment() {
 
-    private var _binding: FragmentNuevoUsuarioGoogleBinding?=null;
+    private var _binding: FragmentNuevoUsuarioGoogleBinding?=null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +30,10 @@ class NuevoUsuarioGoogle : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding= FragmentNuevoUsuarioGoogleBinding.inflate(inflater,container,false)
-        val root=binding.root;
+        val root=binding.root
 
         Log.d(":::Id",FirebaseAuth.getInstance().uid.toString())
 
@@ -45,7 +45,7 @@ class NuevoUsuarioGoogle : Fragment() {
             ){
                 Log.d(":::Nuevo Usuario",FirebaseAuth.getInstance().uid.toString())
                 val daoUsuario: IDAOUsuario = DAOUsuario()
-                val usuario: Usuario = Usuario(FirebaseAuth.getInstance().uid.toString(),
+                val usuario = Usuario(FirebaseAuth.getInstance().uid.toString(),
                     binding.editTextNicknameGoogle.text.toString(),
                     binding.editTextNombreGoogle.text.toString(),
                     binding.editTextBiografiaGoogle.text.toString()

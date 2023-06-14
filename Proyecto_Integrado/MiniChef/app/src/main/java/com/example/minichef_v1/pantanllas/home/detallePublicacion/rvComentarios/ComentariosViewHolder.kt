@@ -9,12 +9,12 @@ import com.example.minichef_v1.R
 import com.example.minichef_v1.bd.modelo.Comentario
 import com.example.minichef_v1.pantanllas.home.detallePublicacion.DetallePublicacionViewModel
 
-class ComentariosViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class ComentariosViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
-    val nickname=view.findViewById<TextView>(R.id.tv_nicknameComentario)
-    val texto=view.findViewById<TextView>(R.id.tv_textoComentario)
-    val btnBanComentario=view.findViewById<Button>(R.id.btn_banComentario)
-    val tvBan=view.findViewById<TextView>(R.id.tv_baneadoComentario)
+    val nickname: TextView =view.findViewById(R.id.tv_nicknameComentario)
+    val texto: TextView =view.findViewById(R.id.tv_textoComentario)
+    private val btnBanComentario: Button =view.findViewById(R.id.btn_banComentario)
+    private val tvBan: TextView =view.findViewById(R.id.tv_baneadoComentario)
 
     fun render(
         comentario: Comentario,
@@ -32,22 +32,27 @@ class ComentariosViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         if (comentario.baneado){
             tvBan.visibility=View.VISIBLE
-            btnBanComentario.text="Unbanear"
-
+            //btnBanComentario.text="Unbanear"
+            btnBanComentario.text=view.resources.getText(R.string.desbanear)
         }else{
             tvBan.visibility=View.GONE
-            btnBanComentario.text="Banear"
+            //btnBanComentario.text="Banear"
+            btnBanComentario.text=view.resources.getText(R.string.banear)
         }
 
         btnBanComentario.setOnClickListener {
             if (comentario.baneado){
-                tvBan.visibility=View.VISIBLE
-                btnBanComentario.text="Unbanear"
+                tvBan.visibility=View.GONE
+                //btnBanComentario.text="Banear"
+                btnBanComentario.text=view.resources.getText(R.string.banear)
                 detallePublicacionViewModel.unbanearComentario(comentario.idComentario)
+                comentario.baneado=false
             }else{
                 detallePublicacionViewModel.banearComentario(comentario.idComentario)
-                tvBan.visibility=View.GONE
-                btnBanComentario.text="Banear"
+                tvBan.visibility=View.VISIBLE
+                btnBanComentario.text=view.resources.getText(R.string.desbanear)
+                //btnBanComentario.text="Unbanear"
+                comentario.baneado=true
             }
         }
     }

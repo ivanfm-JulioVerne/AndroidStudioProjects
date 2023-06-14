@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_Usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Pacifico"
+        android:text="@string/usuario"
+        android:textColor="#000000"
+        android:layout_weight="0"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_baneadoItemUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/baneado"
+        android:textColor="#FF0000"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/divider13"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>

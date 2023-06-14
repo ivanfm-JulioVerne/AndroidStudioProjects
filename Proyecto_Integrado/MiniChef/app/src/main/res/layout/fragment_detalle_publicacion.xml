@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".pantanllas.home.detallePublicacion.DetallePublicacionFragment">
+    tools:context=".pantanllas.home.detallePublicacion.DetallePublicacionFragment"
+    android:theme="@style/Theme.MiniChef_v1">
 
 
     <ScrollView
@@ -29,11 +29,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="5dp"
-                    android:text="Título"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    style="@style/Pacifico"
+                    android:text="@string/titulo"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_editarPublicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_32"
+                    android:layout_weight="0"
+                    android:visibility="gone"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                <ImageButton
+                    android:id="@+id/btn_borrarPublicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_delete_24"
+                    android:layout_weight="0"
+                    android:visibility="gone"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
 
                 <Button
                     android:id="@+id/btn_borrarDetallePublicacion"
@@ -57,17 +77,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
-                android:text="TextView"
+                style="@style/Pacifico"
+                android:text="@string/autor"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="italic" />
+                android:textSize="18sp"
+                android:textStyle="italic|bold" />
 
             <TextView
                 android:id="@+id/descripcionDetallePublicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="Descripcion"
+                android:text="@string/descripcion"
                 android:textColor="#232323"
                 android:textSize="16sp" />
 
@@ -76,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
-                android:text="Categorías:"
+                android:text="@string/categoria"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -103,7 +124,7 @@
                     android:layout_weight="1"
                     android:background="#00000000"
                     android:paddingStart="5dp"
-                    android:text="TextView"
+                    android:text="@string/categoria1"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -130,23 +151,35 @@
                     android:layout_weight="1"
                     android:background="#00000000"
                     android:paddingStart="5dp"
-                    android:text="TextView"
+                    android:text="@string/categoria2"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <View
+                android:id="@+id/divider12"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
-                <Button
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"/>
+
+                <ImageButton
                     android:id="@+id/btn_like"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0"
-                    android:text="Me Gusta"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:src="@drawable/baseline_thumb_up_off_alt_24"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
 
                 <TextView
                     android:id="@+id/meGustaDetallePublicacion"
@@ -170,7 +203,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingredientes:"
+                android:text="@string/ingredientes"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -185,7 +218,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pasos:"
+                android:text="@string/pasos"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -198,7 +231,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Comentarios"
+                android:text="@string/comentarios"
+                style="@style/Pacifico"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -211,7 +245,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <EditText
                     android:id="@+id/et_comentario"
@@ -220,15 +255,16 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Escribe un comentario"
+                    android:hint="@string/escribeComentario"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btn_enviarComentario"
-                    android:layout_width="5dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Enviar" />
+                    android:layout_weight="0"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/baseline_send_24" />
 
             </LinearLayout>
 

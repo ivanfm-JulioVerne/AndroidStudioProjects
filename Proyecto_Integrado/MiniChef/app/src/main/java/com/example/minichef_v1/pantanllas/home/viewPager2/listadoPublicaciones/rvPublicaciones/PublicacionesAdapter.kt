@@ -1,4 +1,4 @@
-package com.example.minichef_v1.pantanllas.home.rvPublicaciones
+package com.example.minichef_v1.pantanllas.home.viewPager2.listadoPublicaciones.rvPublicaciones
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

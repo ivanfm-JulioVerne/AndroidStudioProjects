@@ -16,4 +16,7 @@
     <style name="SplashTheme" parent="Theme.MiniChef_v1">
         <item name="android:windowBackground">@drawable/splashscreem</item>
     </style>
+    <style name="Pacifico">
+        <item name="android:fontFamily">@font/pacifico</item>
+    </style>
 </resources>

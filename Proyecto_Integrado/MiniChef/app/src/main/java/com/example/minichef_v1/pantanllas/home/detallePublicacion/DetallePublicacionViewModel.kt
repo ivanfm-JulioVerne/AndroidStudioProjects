@@ -13,9 +13,9 @@ import com.example.minichef_v1.bd.dao.publicacion.IDAOPublicacion
 import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
 import com.example.minichef_v1.bd.modelo.Comentario
 import com.example.minichef_v1.bd.modelo.Usuario
-import com.example.minichef_v1.pantanllas.perfil.PerfilViewModel
 
-class DetallePublicacionViewModel(val idUsuario: String,val idPublicacion: String,val idAutor:String,val admin:Boolean) : ViewModel() {
+class DetallePublicacionViewModel(val idUsuario: String, private val idPublicacion: String,
+                                  private val idAutor:String, val admin:Boolean) : ViewModel() {
     private val daoPublicacion: IDAOPublicacion = DAOPublicacion()
     private val daoLike: IDAOLike = DAOLike()
     private val daoComentario: IDAOComentario = DAOComentario()
@@ -44,7 +44,7 @@ class DetallePublicacionViewModel(val idUsuario: String,val idPublicacion: Strin
 
     fun autorIsUsuario() :Boolean=(idUsuario==idAutor)
 
-    fun comprobarMeGusta(idUsuario: String, idPublicacion: String) {
+    private fun comprobarMeGusta(idUsuario: String, idPublicacion: String) {
         daoLike.comprobarLike(this, idPublicacion, idUsuario)
     }
 
@@ -63,7 +63,7 @@ class DetallePublicacionViewModel(val idUsuario: String,val idPublicacion: Strin
             }
     }
 
-    fun mostrarComentarios(idPublicacion:String){
+    private fun mostrarComentarios(idPublicacion:String){
         daoComentario.mostrarComentariosByPublicacion(this,idPublicacion,admin)
     }
 
@@ -98,6 +98,10 @@ class DetallePublicacionViewModel(val idUsuario: String,val idPublicacion: Strin
 
     fun unbanearComentario(idComentario: String){
         daoComentario.unbanComentario(idComentario)
+    }
+
+    fun borrarPublicacion(url:String){
+        daoPublicacion.borrarPublicacion(idPublicacion,url)
     }
 
 }

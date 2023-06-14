@@ -13,7 +13,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="nickname"
+        android:hint="@string/nickname"
         android:inputType="textPersonName"
         android:textColorHint="#000000" />
 
@@ -26,7 +26,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="nombre"
+        android:hint="@string/nombre"
         android:inputType="textPersonName"
         android:textColorHint="#000000" />
 
@@ -40,7 +40,7 @@
         android:layout_height="100dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="biografía"
+        android:hint="@string/biografia"
         android:inputType="textMultiLine"
         android:textColorHint="#000000" />
 
@@ -48,7 +48,7 @@
         android:id="@+id/bRegGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registrar"
+        android:text="@string/registrarse"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
@@ -56,7 +56,7 @@
         android:id="@+id/bCancelarGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
+        android:text="@string/cancelar"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 

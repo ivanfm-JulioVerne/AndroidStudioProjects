@@ -14,7 +14,5 @@ data class Publicacion(
 ) {
     constructor() : this(
         id_publicacion=null, titulo=null, descripcion=null, ingredientes=null, pasos=null, imagen=null, num_likes=0,baneado=false, id_usuario=null, id_categoria=null
-    ) {
-
-    }
+    )
 }

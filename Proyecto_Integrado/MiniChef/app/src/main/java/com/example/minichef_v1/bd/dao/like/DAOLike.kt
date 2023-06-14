@@ -5,7 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class DAOLike: IDAOLike {
 
-    val db=FirebaseFirestore.getInstance().collection("like")
+    private val db=FirebaseFirestore.getInstance().collection("like")
 
     override fun anadirLike(idPublicacion: String, idUsuario: String) {
         db.add(

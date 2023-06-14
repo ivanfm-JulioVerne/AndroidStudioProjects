@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:paddingStart="5dp"
-            android:text="TextView"
+            style="@style/Pacifico"
+            android:text="@string/autor"
             android:textStyle="bold|italic" />
 
         <Space
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingStart="5dp"
-        android:text="TextView" />
+        android:text="@string/comentarios" />
 
     <TextView
         android:id="@+id/tv_baneadoComentario"

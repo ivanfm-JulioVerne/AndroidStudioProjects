@@ -16,6 +16,8 @@ import com.example.minichef_v1.bd.dao.usuario.IDAOUsuario
 import com.example.minichef_v1.databinding.FragmentSigninBinding
 import com.example.minichef_v1.bd.modelo.Usuario
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
 class Signin : Fragment() {
 
@@ -32,7 +34,7 @@ class Signin : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding= FragmentSigninBinding.inflate(inflater,container,false)
         val root=binding.root
@@ -49,31 +51,42 @@ class Signin : Fragment() {
                 binding.editTextPasswordReg.text.isNotEmpty() &&
                 binding.editTextPasswordReg2.text.isNotEmpty() &&
                 binding.editTextNickname.text.isNotEmpty() &&
-                binding.editTextNombre.text.isNotEmpty() &&
-                binding.editTextPasswordReg.text.toString() == binding.editTextPasswordReg2.text.toString()
+                binding.editTextNombre.text.isNotEmpty()
+
             ){
-                FirebaseAuth
-                    .getInstance()
-                    .createUserWithEmailAndPassword(
-                        binding.editTextEmailReg.text.toString(),
-                        binding.editTextPasswordReg.text.toString())
-                    .addOnCompleteListener{
-                        if (it.isSuccessful){
-                            //showAlert()
-                            Log.d(":::Nuevo Usuario",it.result.user?.uid ?: "")
-                            val daoUsuario: IDAOUsuario = DAOUsuario()
-                            val usuario: Usuario = Usuario(it.result.user!!.uid,
-                                binding.editTextNickname.text.toString(),
-                                binding.editTextNombre.text.toString(),
-                                binding.editTextBiografia.text.toString()
-                            )
-                            daoUsuario.crearUsuarioNoAdmin(usuario)
-                            (activity as AuthActivity).goToMainActivity(usuario)
-                            //val prefs:SharedPreferences
-                        }else{
-                            showAlert()
+                if (binding.editTextPasswordReg.text.toString() != binding.editTextPasswordReg2.text.toString()){
+                    alertContrasenaNoCoinciden()
+                }else{
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                            binding.editTextEmailReg.text.toString(),
+                            binding.editTextPasswordReg.text.toString())
+                        .addOnCompleteListener{
+                            if (it.isSuccessful){
+                                //showAlert()
+                                Log.d(":::Nuevo Usuario",it.result.user?.uid ?: "")
+                                val daoUsuario: IDAOUsuario = DAOUsuario()
+                                val usuario = Usuario(it.result.user!!.uid,
+                                    binding.editTextNickname.text.toString(),
+                                    binding.editTextNombre.text.toString(),
+                                    binding.editTextBiografia.text.toString()
+                                )
+                                daoUsuario.crearUsuarioNoAdmin(usuario)
+                                (activity as AuthActivity).goToMainActivity(usuario)
+                                //val prefs:SharedPreferences
+                            }else{
+                                if (it.exception is FirebaseAuthUserCollisionException){
+                                    alertUsuarioExistente()
+                                }else if(it.exception is FirebaseAuthInvalidCredentialsException){
+                                    alertMalEmail()
+                                }else{
+                                    Log.e(":::Error",it.exception.toString())
+                                    showAlert()
+                                }
+                            }
                         }
-                    }
+                }
+            }else{
+                showAlertFaltanDatos()
             }
         }
 
@@ -81,13 +94,48 @@ class Signin : Fragment() {
         return root
     }
 
-    public fun showAlert(){
+    private fun showAlertFaltanDatos(){
         AlertDialog.Builder(activity)
             .setTitle("Error")
-            .setMessage("Se ha producido un error autenticando al usuario")
+            .setMessage("No se pueden dejar en blanco los campos email, contraseña, confirmar contraseña, nickname y nombre")
             .setPositiveButton("OK",null)
             .create()
             .show()
+    }
 
+    private fun showAlert(){
+        AlertDialog.Builder(activity)
+            .setTitle("Error")
+            .setMessage("Se ha producido un error registrando al usuario")
+            .setPositiveButton("OK",null)
+            .create()
+            .show()
+    }
+
+    private fun alertUsuarioExistente(){
+        AlertDialog.Builder(activity)
+            .setTitle("Error")
+            .setMessage("El usuario ya existe")
+            .setPositiveButton("OK",null)
+            .create()
+            .show()
+    }
+
+    private fun alertMalEmail(){
+        AlertDialog.Builder(activity)
+            .setTitle("Error")
+            .setMessage("El email esta mal formado")
+            .setPositiveButton("OK",null)
+            .create()
+            .show()
+    }
+
+    private fun alertContrasenaNoCoinciden(){
+        AlertDialog.Builder(activity)
+            .setTitle("Error")
+            .setMessage("Las contraseñas no coinciden")
+            .setPositiveButton("OK",null)
+            .create()
+            .show()
     }
 }

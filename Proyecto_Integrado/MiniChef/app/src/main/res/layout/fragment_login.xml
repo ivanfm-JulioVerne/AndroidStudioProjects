@@ -14,7 +14,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <Space
@@ -26,7 +26,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/contrasena"
         android:inputType="textPassword" />
 
     <Space
@@ -37,7 +37,7 @@
         android:id="@+id/bLoginLogin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesion"
+        android:text="@string/iniciarSesion"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
@@ -49,19 +49,7 @@
         android:id="@+id/bLoginSignin"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registrase"
-        android:textAllCaps="false"
-        app:cornerRadius="50dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp" />
-
-    <Button
-        android:id="@+id/bLoginSignin2"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="Google"
+        android:text="@string/registrarse"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 

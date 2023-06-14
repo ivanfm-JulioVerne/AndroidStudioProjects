@@ -1,13 +1,14 @@
 package com.example.minichef_v1
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
 import com.example.minichef_v1.bd.modelo.Usuario
-
+import com.google.firebase.auth.FirebaseAuth
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +22,18 @@ class AuthActivity : AppCompatActivity() {
             this.supportActionBar!!.hide()
         }
 
+        if (FirebaseAuth.getInstance().currentUser != null){
+            DAOUsuario().getUsuarioLogueado(FirebaseAuth.getInstance().currentUser!!.uid,this)
+        }
+
+        //Log.d(":::Usuario Logueado",FirebaseAuth.getInstance().currentUser?.uid ?:"Vacio")
+
         //supportFragmentManager.beginTransaction().add(R.id.contenedor_auth,NoAuth()).commit();
     }
 
-    public fun goToMainActivity(usuario: Usuario){
+    fun goToMainActivity(usuario: Usuario){
         val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtra("idUsuario",usuario.id_usuario)
         intent.putExtra("nickname",usuario.nickname)
         intent.putExtra("nombre",usuario.nombre)
@@ -38,9 +46,17 @@ class AuthActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun isStoragePermissionGranted(): Boolean {
-        return if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun usuarioBaneado(){
+        AlertDialog.Builder(this)
+            .setTitle("Error")
+            .setMessage("Este usuario está baneado")
+            .setPositiveButton("OK",null)
+            .create()
+            .show()
+    }
+
+    private fun isStoragePermissionGranted(): Boolean {
+        return if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
             ) {
                 true
@@ -52,8 +68,5 @@ class AuthActivity : AppCompatActivity() {
                 )
                 false
             }
-        } else { //permission is automatically granted on sdk<23 upon installation
-            true
         }
-    }
 }

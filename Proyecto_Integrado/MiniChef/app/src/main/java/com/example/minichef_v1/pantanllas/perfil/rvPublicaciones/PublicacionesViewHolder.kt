@@ -13,12 +13,11 @@ import com.example.minichef_v1.R
 import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.pantanllas.perfil.PerfilFragment
 
-class PublicacionesViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class PublicacionesViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
-    val titulo=view.findViewById<TextView>(R.id.itemPublicacionTitulo)
-    val descripcion=view.findViewById<TextView>(R.id.itemDescripcionPublicacion)
-    val imagen=view.findViewById<ImageView>(R.id.itemIvPublicacion)
-    val view=view
+    val titulo: TextView =view.findViewById(R.id.itemPublicacionTitulo)
+    val descripcion: TextView =view.findViewById(R.id.itemDescripcionPublicacion)
+    private val imagen: ImageView =view.findViewById(R.id.itemIvPublicacion)
 
     fun render(publicacion: Publicacion){
         titulo.text=publicacion.titulo

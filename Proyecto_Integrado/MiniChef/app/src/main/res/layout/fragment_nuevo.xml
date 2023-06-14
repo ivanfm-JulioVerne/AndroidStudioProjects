@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Cámara"
+                    android:text="@string/camara"
                     android:textAllCaps="false"
                     app:cornerRadius="50dp" />
 
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Galería"
+                    android:text="@string/galeria"
                     android:textAllCaps="false"
                     app:cornerRadius="50dp" />
             </LinearLayout>
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center_horizontal"
-                android:text="Categoría 1"
+                android:text="@string/categoria1"
                 android:textColor="#000000" />
 
             <View
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center_horizontal"
-                android:text="Categoría 2"
+                android:text="@string/categoria2"
                 android:textColor="#000000" />
 
             <View
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center"
-                android:text="Ingrediente"
+                android:text="@string/ingredientes"
                 android:textColor="#000000" />
 
             <View
@@ -159,7 +159,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Añadir Ingrediente"
+                android:text="@string/agregarIngrediente"
                 android:textAllCaps="false"
                 app:cornerRadius="50dp" />
 
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center"
-                android:text="Pasos"
+                android:text="@string/pasos"
                 android:textColor="#000000" />
 
             <View
@@ -193,7 +193,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Añadir Pasos"
+                android:text="@string/agregarPaso"
                 android:textAllCaps="false"
                 app:cornerRadius="50dp" />
 
@@ -202,7 +202,7 @@
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Publicar"
+                android:text="@string/publicar"
                 android:textAllCaps="false"
                 app:cornerRadius="50dp" />
 

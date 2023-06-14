@@ -19,7 +19,7 @@
         android:id="@+id/bLoginEmail"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
+        android:text="@string/iniciarSesion"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
@@ -31,7 +31,7 @@
         android:id="@+id/bRegEmail"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Registro"
+        android:text="@string/registrarse"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
@@ -43,7 +43,7 @@
         android:id="@+id/bLoginGoogle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión con Google"
+        android:text="@string/iniciarSesionGoogle"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 

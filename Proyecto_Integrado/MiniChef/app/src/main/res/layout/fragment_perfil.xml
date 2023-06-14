@@ -19,18 +19,49 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="nickname"
+            android:text="@string/nickname"
+            style="@style/Pacifico"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_editar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Editar" />
+            android:src="@drawable/baseline_edit_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:cornerRadius="50dp" />
+
+        <Space
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0" />
+
+        <ImageButton
+            android:id="@+id/btn_borrarUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:src="@drawable/baseline_delete_48"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:cornerRadius="50dp" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <ImageButton
+            android:id="@+id/btn_LogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:src="@drawable/baseline_logout_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:cornerRadius="50dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="seguidores"
+                android:text="@string/seguirdores"
                 android:textAlignment="center"
                 android:textColor="#000000" />
 
@@ -61,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="publicaciones"
+                android:text="@string/publicaciones"
                 android:textAlignment="center"
                 android:textColor="#000000" />
 
@@ -78,7 +109,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="siguiendo"
+                android:text="@string/siguiendo"
                 android:textAlignment="center"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -89,7 +120,7 @@
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:paddingStart="5dp"
-            android:text="nombre"
+            android:text="@string/nombre"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -99,7 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
-        android:text="descripcion"
+        android:text="@string/descripcion"
         android:textColor="#000000" />
 
     <View

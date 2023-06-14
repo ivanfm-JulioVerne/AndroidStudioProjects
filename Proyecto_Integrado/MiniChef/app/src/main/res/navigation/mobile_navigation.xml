@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_detallePublicacionFragment"
             app:destination="@id/detallePublicacionFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_listadoUsuariosFragment"
+            app:destination="@id/listadoUsuariosFragment" />
     </fragment>
 
     <fragment
@@ -44,6 +47,9 @@
         <action
             android:id="@+id/action_detallePublicacionFragment_to_navigation_perfil"
             app:destination="@id/navigation_perfil" />
+        <action
+            android:id="@+id/action_detallePublicacionFragment_to_editarPublicacionFragment"
+            app:destination="@id/editarPublicacionFragment" />
     </fragment>
     <fragment
         android:id="@+id/autorFragment"
@@ -60,6 +66,36 @@
         tools:layout="@layout/fragment_editar" >
         <action
             android:id="@+id/action_editarFragment_to_navigation_perfil"
+            app:destination="@id/navigation_perfil"
+            app:popUpTo="@id/navigation_perfil"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/listadoPublicacionesFragment"
+        android:name="com.example.minichef_v1.pantanllas.home.viewPager2.listadoPublicaciones.ListadoPublicacionesFragment"
+        android:label="fragment_listado_publicaciones"
+        tools:layout="@layout/fragment_listado_publicaciones" />
+    <fragment
+        android:id="@+id/listadoUsuariosFragment"
+        android:name="com.example.minichef_v1.pantanllas.home.listadoUsuarios.ListadoUsuariosFragment"
+        android:label="fragment_listado_usuarios"
+        tools:layout="@layout/fragment_listado_usuarios" >
+        <action
+            android:id="@+id/action_listadoUsuariosFragment_to_autorFragment"
+            app:destination="@id/autorFragment" />
+        <action
+            android:id="@+id/action_listadoUsuariosFragment_to_navigation_perfil"
             app:destination="@id/navigation_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarPublicacionFragment"
+        android:name="com.example.minichef_v1.pantanllas.home.detallePublicacion.editarPublicacion.EditarPublicacionFragment"
+        android:label="fragment_editar_publicacion"
+        tools:layout="@layout/fragment_editar_publicacion" >
+        <action
+            android:id="@+id/action_editarPublicacionFragment_to_detallePublicacionFragment"
+            app:destination="@id/detallePublicacionFragment"
+            app:popUpTo="@id/detallePublicacionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

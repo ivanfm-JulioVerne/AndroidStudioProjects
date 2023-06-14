@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.R
 import com.example.minichef_v1.bd.modelo.Publicacion
-import com.example.minichef_v1.pantanllas.home.detallePublicacion.rvComentarios.ComentariosViewHolder
 
 class PublicacionesAutorAdapter(private val publicaciones:List<Publicacion>):RecyclerView.Adapter<PublicacionesAutorViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacionesAutorViewHolder {

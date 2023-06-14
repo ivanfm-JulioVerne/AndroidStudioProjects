@@ -19,7 +19,8 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="nickname"
+            style="@style/Pacifico"
+            android:text="@string/nickname"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -30,10 +31,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Borrar"
+            android:text="@string/banear"
             android:visibility="gone" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tv_baneadoAutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/baneado"
+        android:textColor="#FF0000"
+        android:visibility="gone" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -45,7 +52,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="seguidores"
+            android:text="@string/seguirdores"
             android:textAlignment="center"
             android:textColor="#000000" />
 
@@ -62,7 +69,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="publicaciones"
+            android:text="@string/publicaciones"
             android:textAlignment="center"
             android:textColor="#000000" />
 
@@ -79,7 +86,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="siguiendo"
+            android:text="@string/siguiendo"
             android:textAlignment="center"
             android:textColor="#000000" />
     </LinearLayout>
@@ -88,7 +95,7 @@
         android:id="@+id/btn_seguir"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Seguir"
+        android:text="@string/seguir"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 
@@ -96,9 +103,10 @@
         android:id="@+id/tv_nombreAutor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center|left"
+        android:gravity="center|start"
         android:paddingStart="5dp"
-        android:text="nombre"
+        android:paddingEnd="5dp"
+        android:text="@string/nombre"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -108,7 +116,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
-        android:text="descripcion"
+        android:paddingEnd="5dp"
+        android:text="@string/descripcion"
         android:textColor="#000000" />
 
     <View

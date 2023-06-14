@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.MainActivity
@@ -14,10 +13,7 @@ import com.example.minichef_v1.R
 import com.example.minichef_v1.bd.modelo.Publicacion
 import com.example.minichef_v1.bd.modelo.Usuario
 import com.example.minichef_v1.databinding.FragmentAutorBinding
-import com.example.minichef_v1.pantanllas.home.detallePublicacion.DetallePublicacionViewModel
-import com.example.minichef_v1.pantanllas.home.detallePublicacion.DetallePublicacionViewModelFactory
 import com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.rvPublicaciones.PublicacionesAutorAdapter
-import com.example.minichef_v1.pantanllas.home.rvPublicaciones.PublicacionesAdapter
 
 class AutorFragment : Fragment() {
 
@@ -32,14 +28,10 @@ class AutorFragment : Fragment() {
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding=FragmentAutorBinding.inflate(inflater,container,false)
 
         val root=binding.root
@@ -51,7 +43,7 @@ class AutorFragment : Fragment() {
         }
 
         val bundle=requireArguments()
-        val autor:Usuario=Usuario(
+        val autor=Usuario(
             bundle.getString("idAutor")!!,
             bundle.getString("nickname")!!,
             bundle.getString("nombre")!!,
@@ -64,15 +56,27 @@ class AutorFragment : Fragment() {
         )
 
         if (autor.baneado){
-            binding.btnBorrarAutor.text="Desbanear"
+            binding.tvBaneadoAutor.visibility=View.VISIBLE
+            //binding.btnBorrarAutor.text="Desbanear"
+            binding.btnBorrarAutor.text=resources.getText(R.string.desbanear)
         }else{
-            binding.btnBorrarAutor.text="Banear"
+            binding.tvBaneadoAutor.visibility=View.GONE
+            //binding.btnBorrarAutor.text="Banear"
+            binding.btnBorrarAutor.text=resources.getText(R.string.banear)
         }
 
         binding.btnBorrarAutor.setOnClickListener {
             if (autor.baneado){
+                autor.baneado=false
+                //binding.btnBorrarAutor.text="Banear"
+                binding.btnBorrarAutor.text=resources.getText(R.string.banear)
+                binding.tvBaneadoAutor.visibility=View.GONE
                 autorViewModel.unbanearAutor(autor.id_usuario)
             }else{
+                autor.baneado=true
+                //binding.btnBorrarAutor.text="Desbanear"
+                binding.btnBorrarAutor.text=resources.getText(R.string.desbanear)
+                binding.tvBaneadoAutor.visibility=View.VISIBLE
                 autorViewModel.banearAutor(autor.id_usuario)
             }
         }
@@ -80,32 +84,41 @@ class AutorFragment : Fragment() {
         binding.tvNicknameAutor.text=autor.nickname
         binding.tvNombreAutor.text=autor.nombre
         binding.tvBiografiaAutor.text=autor.biografia
-        binding.tvSeguidoresAutor.text="Seguidores\n" + autor.num_seguidores
-        binding.tvSiguiendoAutor.text="Siguiendo\n" + autor.num_siguiendo
-        binding.tvPublicacionAutor.text="Publiciaciones\n" + autor.num_publicacion
+
+        val seguidores=(resources.getText(R.string.seguirdores) as String)+"\n" + autor.num_seguidores
+        val siguiendo=(resources.getText(R.string.siguiendo) as String)+"\n" + autor.num_siguiendo
+        val publicaciones=(resources.getText(R.string.publicaciones) as String)+"\n" + autor.num_publicacion
+
+        binding.tvSeguidoresAutor.text=seguidores
+        binding.tvSiguiendoAutor.text=siguiendo
+        binding.tvPublicacionAutor.text=publicaciones
 
         refreshRecyclerView(emptyList(),root)
 
-        autorViewModel.lista.observe(viewLifecycleOwner, Observer {
+        autorViewModel.lista.observe(viewLifecycleOwner) {
             refreshRecyclerView(it, root)
-        })
-        autorViewModel.leSigue.observe(viewLifecycleOwner, Observer {
-            if (it){
-                binding.btnSeguir.text="Dejar de Seguir"
-            }else{
-                binding.btnSeguir.text="Seguir"
+        }
+        autorViewModel.leSigue.observe(viewLifecycleOwner) {
+            if (it) {
+                //binding.btnSeguir.text = "Dejar de Seguir"
+                binding.btnSeguir.text = resources.getText(R.string.dejarSeguir)
+            } else {
+                //binding.btnSeguir.text = "Seguir"
+                binding.btnSeguir.text = resources.getText(R.string.seguir)
             }
-        })
+        }
 
         binding.btnSeguir.setOnClickListener {
             if (autorViewModel.leSigue.value!!){
                 autorViewModel.dejarSeguir()
                 autor.num_seguidores=autor.num_seguidores-1
-                binding.tvSeguidoresAutor.text="Seguidores\n" + autor.num_seguidores
+                val seguirdores=resources.getString(R.string.seguirdores)+"\n" + autor.num_seguidores
+                binding.tvSeguidoresAutor.text=seguirdores
             }else{
                 autorViewModel.seguir()
                 autor.num_seguidores=autor.num_seguidores+1
-                binding.tvSeguidoresAutor.text="Seguidores\n" + autor.num_seguidores
+                val seguirdores=resources.getString(R.string.seguirdores)+"\n" + autor.num_seguidores
+                binding.tvSeguidoresAutor.text=seguirdores
             }
         }
 

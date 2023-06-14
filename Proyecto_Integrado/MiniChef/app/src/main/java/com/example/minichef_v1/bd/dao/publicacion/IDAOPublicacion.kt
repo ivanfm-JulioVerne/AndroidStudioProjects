@@ -2,24 +2,29 @@ package com.example.minichef_v1.bd.dao.publicacion
 
 import android.view.View
 import com.example.minichef_v1.bd.modelo.Publicacion
-import com.example.minichef_v1.bd.modelo.Usuario
-import com.example.minichef_v1.pantanllas.home.HomeViewModel
 import com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.AutorViewModel
+import com.example.minichef_v1.pantanllas.home.viewPager2.listadoPublicaciones.ListadoPublicacionesViewModel
 import com.example.minichef_v1.pantanllas.perfil.PerfilViewModel
 
 interface IDAOPublicacion {
-    public fun crearPublicacion(publicacion: Publicacion,view: View)
+    fun crearPublicacion(publicacion: Publicacion,view: View)
 
-    public fun getMasPopulares(homeViewModel: HomeViewModel,admin:Boolean)
+    fun getMasPopulares(homeViewModel: ListadoPublicacionesViewModel, admin:Boolean)
     fun getPublicacionesPorUsuario(perfilViewModel: PerfilViewModel, idUsuario: String)
     fun getPublicacionesPorUsuario(autorViewHolder: AutorViewModel, idUsuario: String,admin: Boolean)
+
+    fun getPublicacionesSiguiendo(idUsuarios: List<String>,listadoPublicacionesViewModel: ListadoPublicacionesViewModel,admin:Boolean)
+
+    fun getPublicacionesSiguiendoTitulo(idUsuarios: List<String>,listadoPublicacionesViewModel: ListadoPublicacionesViewModel,titulo: String,admin:Boolean)
+
+    fun getPublicacionesSiguiendoCategoria(idUsuarios: List<String>,listadoPublicacionesViewModel: ListadoPublicacionesViewModel,categoria: String,admin:Boolean)
 
     fun darLike(idPublicacion:String,idUsuario: String)
 
     fun quitarLike(idPublicacion:String,idUsuario: String)
 
-    fun buscarPorCategoria(homeViewModel: HomeViewModel,categoria:String,admin: Boolean)
-    fun buscarPorTitulo(homeViewModel: HomeViewModel, titulo: String,admin: Boolean)
+    fun buscarPorCategoria(homeViewModel: ListadoPublicacionesViewModel,categoria:String,admin: Boolean)
+    fun buscarPorTitulo(homeViewModel: ListadoPublicacionesViewModel, titulo: String,admin: Boolean)
 
     fun banPublicacion(id:String)
 
@@ -29,5 +34,9 @@ interface IDAOPublicacion {
 
     fun unbanPublicacionesPorUsuario(id:String)
 
-    fun editarUsuario(usuario: Usuario)
+    fun borrarPublicacion(idPublicacion:String,url:String)
+
+    fun borrarPublicacionPorIdUsuario(idUsuario: String)
+
+    fun editarPublicacion(publicacion: Publicacion)
 }

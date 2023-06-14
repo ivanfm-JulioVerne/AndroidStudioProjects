@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class DAOComentario : IDAOComentario {
 
-    val db = FirebaseFirestore.getInstance().collection("comentario")
+    private val db = FirebaseFirestore.getInstance().collection("comentario")
 
     override fun anadirComentario(idPublicacion: String, idUsuario: String, texto: String, nickname: String) {
         db.add(
@@ -72,12 +72,23 @@ override fun unbanComentarioPorUsuario(idUsuario: String) {
         }
     }
 
+    override fun borrarComentarioPorIdUsuario(idUsuario: String) {
+        db.whereEqualTo("idUsuario",idUsuario).get().addOnCompleteListener {
+            if (!it.result.isEmpty){
+                for (i in 0 until it.result.documents.size){
+                    val result=it.result.documents[i]
+                    borrarComentario(result.id)
+                }
+            }
+        }
+    }
+
     override fun borrarComentario(id: String) {
         db.document(id).delete()
     }
 
     override fun mostrarComentariosByPublicacion(detallePublicacionViewModel: DetallePublicacionViewModel,idPublicacion: String,admin:Boolean) {
-        if (idPublicacion!=null && idPublicacion!=""){
+        if (idPublicacion!=""){
             if (admin){
                 db.whereEqualTo("idPublicacion", idPublicacion).get().addOnCompleteListener {
                     if (!it.result.isEmpty) {

@@ -1,7 +1,5 @@
 package com.example.minichef_v1.bd.modelo
 
-import android.util.Log
-
 data class Usuario (
     var id_usuario:String,
     var nickname:String,
@@ -24,8 +22,7 @@ data class Usuario (
                 num_seguidores = 0,
                 num_siguiendo = 0,
                 num_publicacion = 0
-            ) {
-    }
+            )
 
     constructor() : this(
         "","","",""
@@ -43,15 +40,4 @@ data class Usuario (
                 num_publicacion = num_publicacion
             ) {
     }*/
-
-    fun print(){
-        Log.d(":::id_usuario",id_usuario)
-        Log.d(":::nickname",nickname)
-        Log.d(":::nombre",nombre)
-        Log.d(":::biografia",biografia ?:"")
-        Log.d(":::admin",admin.toString())
-        Log.d(":::num_seguidores",num_seguidores.toString())
-        Log.d(":::num_siguiendo",num_siguiendo.toString())
-        Log.d(":::num_publicacion",num_publicacion.toString())
-    }
 }

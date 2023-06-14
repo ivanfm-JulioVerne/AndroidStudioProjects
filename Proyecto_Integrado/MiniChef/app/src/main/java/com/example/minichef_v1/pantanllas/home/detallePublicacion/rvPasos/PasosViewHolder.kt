@@ -7,11 +7,12 @@ import com.example.minichef_v1.R
 
 class PasosViewHolder(view: View):RecyclerView.ViewHolder(view) {
 
-    var texto=view.findViewById<TextView>(R.id.tv_pasosItem)
-    var num=view.findViewById<TextView>(R.id.tv_ordenItem)
+    var texto: TextView =view.findViewById(R.id.tv_pasosItem)
+    private var num: TextView =view.findViewById(R.id.tv_ordenItem)
 
     fun render(orden:Int,paso:String){
         texto.text=paso
-        num.text=(""+orden)
+        val orden=""+orden
+        num.text=orden
     }
 }

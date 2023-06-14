@@ -3,17 +3,17 @@ package com.example.minichef_v1.bd.dao.publicacion
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.findFragment
-import com.example.minichef_v1.bd.dao.comentario.DAOComentario
 import com.example.minichef_v1.bd.dao.like.DAOLike
 import com.example.minichef_v1.bd.dao.like.IDAOLike
 import com.example.minichef_v1.bd.modelo.Publicacion
-import com.example.minichef_v1.pantanllas.home.HomeViewModel
 import com.example.minichef_v1.pantanllas.home.detallePublicacion.autor.AutorViewModel
+import com.example.minichef_v1.pantanllas.home.viewPager2.listadoPublicaciones.ListadoPublicacionesViewModel
 import com.example.minichef_v1.pantanllas.nuevo.NuevoFragment
 import com.example.minichef_v1.pantanllas.perfil.PerfilViewModel
-import com.google.firebase.firestore.Filter
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
+@Suppress("UNCHECKED_CAST")
 class DAOPublicacion: IDAOPublicacion {
 
     private val db = FirebaseFirestore.getInstance().collection("publicacion")
@@ -26,7 +26,7 @@ class DAOPublicacion: IDAOPublicacion {
         }
     }
 
-    override fun getMasPopulares(homeViewModel: HomeViewModel,admin:Boolean) {
+    override fun getMasPopulares(homeViewModel: ListadoPublicacionesViewModel, admin:Boolean) {
         if (admin) {
             db.orderBy("num_likes").limit(50).get().addOnCompleteListener {
                 if (!it.result.isEmpty) {
@@ -103,7 +103,7 @@ class DAOPublicacion: IDAOPublicacion {
                         perfilViewModel.setLista(publicaciones)
                     }
                 }
-                db.whereEqualTo("baneado",false).whereEqualTo("id_usuario",idUsuario).get().addOnCompleteListener{
+                /*db.whereEqualTo("baneado",false).whereEqualTo("id_usuario",idUsuario).get().addOnCompleteListener{
                     if (it.isSuccessful){
                         val publicaciones = mutableListOf<Publicacion>()
                         for (i in 0 until it.result.documents.size){
@@ -122,7 +122,7 @@ class DAOPublicacion: IDAOPublicacion {
                         perfilViewModel.setLista(publicaciones)
                     }
 
-            }
+            }*/
         }
     }
 
@@ -167,6 +167,210 @@ class DAOPublicacion: IDAOPublicacion {
                         }
                         autorViewHolder.setLista(publicaciones)
                     }
+                }
+            }
+        }
+    }
+
+    override fun getPublicacionesSiguiendo(
+        idUsuarios: List<String>,
+        listadoPublicacionesViewModel: ListadoPublicacionesViewModel,
+        admin:Boolean
+    ) {
+        if (admin){
+            val publicaciones = mutableListOf<Publicacion>()
+            var count=0
+            for (i in idUsuarios.indices){
+                db.whereEqualTo("id_usuario",idUsuarios[i]).get().addOnCompleteListener {
+                    if (!it.result.isEmpty){
+                        for (j in 0 until it.result.documents.size){
+                            val result= it.result.documents[j]
+                            publicaciones.add(Publicacion(result.id,
+                                result.get("titulo") as String,
+                                result.get("descripcion") as String,
+                                result.get("ingredientes") as ArrayList<String>,
+                                result.get("pasos") as ArrayList<String>,
+                                result.get("imagen") as String,
+                                result.get("num_likes") as Long,
+                                result.get("baneado") as Boolean,
+                                result.get("id_usuario") as String,
+                                result.get("id_categoria") as ArrayList<String>))
+                        }
+                    }
+                    if (count==idUsuarios.size-1){
+                        listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                                publicacion -> publicacion.num_likes
+                            }
+                        )
+                    }
+                    count++
+                }
+            }
+        }else{
+            val publicaciones = mutableListOf<Publicacion>()
+            for (i in idUsuarios.indices){
+                db.whereEqualTo("baneado",false).whereEqualTo("id_usuario",idUsuarios[i]).get().addOnCompleteListener {
+                    if (!it.result.isEmpty){
+                        for (j in 0 until it.result.documents.size){
+                            val result= it.result.documents[j]
+                            publicaciones.add(Publicacion(result.id,
+                                result.get("titulo") as String,
+                                result.get("descripcion") as String,
+                                result.get("ingredientes") as ArrayList<String>,
+                                result.get("pasos") as ArrayList<String>,
+                                result.get("imagen") as String,
+                                result.get("num_likes") as Long,
+                                result.get("baneado") as Boolean,
+                                result.get("id_usuario") as String,
+                                result.get("id_categoria") as ArrayList<String>))
+                        }
+                    }
+                    if (i==idUsuarios.size-1){
+                        listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                                publicacion -> publicacion.num_likes
+                        }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    override fun getPublicacionesSiguiendoTitulo(
+        idUsuarios: List<String>,
+        listadoPublicacionesViewModel: ListadoPublicacionesViewModel,
+        titulo: String,
+        admin:Boolean
+    ) {
+        if (admin){
+            val publicaciones = mutableListOf<Publicacion>()
+            for (i in idUsuarios.indices){
+                db.whereEqualTo("id_usuario",idUsuarios[i]).get().addOnCompleteListener {
+                    if (!it.result.isEmpty){
+                        for (j in 0 until it.result.documents.size){
+                            val result= it.result.documents[j]
+                            if ((result.get("titulo") as String).contains(titulo,false)){
+                                publicaciones.add(Publicacion(result.id,
+                                    result.get("titulo") as String,
+                                    result.get("descripcion") as String,
+                                    result.get("ingredientes") as ArrayList<String>,
+                                    result.get("pasos") as ArrayList<String>,
+                                    result.get("imagen") as String,
+                                    result.get("num_likes") as Long,
+                                    result.get("baneado") as Boolean,
+                                    result.get("id_usuario") as String,
+                                    result.get("id_categoria") as ArrayList<String>))
+                            }
+                        }
+
+                    }
+                    if (i==idUsuarios.size-1){
+                        listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                                publicacion -> publicacion.num_likes
+                        }
+                        )
+                    }
+                }
+            }
+        }else{
+            val publicaciones = mutableListOf<Publicacion>()
+            for (i in idUsuarios.indices){
+                db.whereEqualTo("baneado",false).whereEqualTo("id_usuario",idUsuarios[i]).get().addOnCompleteListener {
+                    if (!it.result.isEmpty){
+                        for (j in 0 until it.result.documents.size){
+                            val result= it.result.documents[j]
+                            if ((result.get("titulo") as String).contains(titulo,false)){
+                                publicaciones.add(Publicacion(result.id,
+                                    result.get("titulo") as String,
+                                    result.get("descripcion") as String,
+                                    result.get("ingredientes") as ArrayList<String>,
+                                    result.get("pasos") as ArrayList<String>,
+                                    result.get("imagen") as String,
+                                    result.get("num_likes") as Long,
+                                    result.get("baneado") as Boolean,
+                                    result.get("id_usuario") as String,
+                                    result.get("id_categoria") as ArrayList<String>))
+                            }
+                        }
+
+                    }
+                    if (i==idUsuarios.size-1){
+                        listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                                publicacion -> publicacion.num_likes
+                        }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    override fun getPublicacionesSiguiendoCategoria(
+        idUsuarios: List<String>,
+        listadoPublicacionesViewModel: ListadoPublicacionesViewModel,
+        categoria: String,
+        admin: Boolean
+    ) {
+        if (admin){
+            db.get().addOnCompleteListener {
+                if (!it.result.isEmpty){
+                    val publicaciones = mutableListOf<Publicacion>()
+                    for (i in 0 until it.result.documents.size){
+                        val result=it.result.documents[i]
+                        val idCategoria:ArrayList<String> =result.get("id_categoria") as ArrayList<String>
+                        var categoriaExiste=false
+                        for (j in 0 until idCategoria.size){
+                            if (idCategoria[j]==categoria){
+                                categoriaExiste=true
+                            }
+                        }
+                        if (categoriaExiste && idUsuarios.contains(result.get("id_usuario"))){
+                            publicaciones.add(Publicacion(result.id,
+                                result.get("titulo") as String,
+                                result.get("descripcion") as String,
+                                result.get("ingredientes") as ArrayList<String>,
+                                result.get("pasos") as ArrayList<String>,
+                                result.get("imagen") as String,
+                                result.get("num_likes") as Long,
+                                result.get("baneado") as Boolean,
+                                result.get("id_usuario") as String,
+                                result.get("id_categoria") as ArrayList<String>))
+                        }
+                    }
+                    listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                            publicacion -> publicacion.num_likes
+                    })
+                }
+            }
+        }else{
+            db.whereEqualTo("baneado",false).get().addOnCompleteListener {
+                if (!it.result.isEmpty){
+                    val publicaciones = mutableListOf<Publicacion>()
+                    for (i in 0 until it.result.documents.size){
+                        val result=it.result.documents[i]
+                        val idCategoria:ArrayList<String> =result.get("id_categoria") as ArrayList<String>
+                        var categoriaExiste=false
+                        for (j in 0 until idCategoria.size){
+                            if (idCategoria[j]==categoria){
+                                categoriaExiste=true
+                            }
+                        }
+                        if (categoriaExiste && idUsuarios.contains(result.get("id_usuario"))){
+                            publicaciones.add(Publicacion(result.id,
+                                result.get("titulo") as String,
+                                result.get("descripcion") as String,
+                                result.get("ingredientes") as ArrayList<String>,
+                                result.get("pasos") as ArrayList<String>,
+                                result.get("imagen") as String,
+                                result.get("num_likes") as Long,
+                                result.get("baneado") as Boolean,
+                                result.get("id_usuario") as String,
+                                result.get("id_categoria") as ArrayList<String>))
+                        }
+                    }
+                    listadoPublicacionesViewModel.setLista(publicaciones.sortedByDescending {
+                            publicacion -> publicacion.num_likes
+                    })
                 }
             }
         }
@@ -218,7 +422,7 @@ class DAOPublicacion: IDAOPublicacion {
         }
     }
 
-    override fun buscarPorTitulo(homeViewModel: HomeViewModel,titulo: String,admin:Boolean) {
+    override fun buscarPorTitulo(homeViewModel: ListadoPublicacionesViewModel,titulo: String,admin:Boolean) {
         if (admin){
             db.orderBy("num_likes").get().addOnCompleteListener {
                 if (!it.result.isEmpty){
@@ -326,7 +530,31 @@ class DAOPublicacion: IDAOPublicacion {
         }
     }
 
-    override fun buscarPorCategoria(homeViewModel: HomeViewModel,categoria: String,admin:Boolean) {
+    override fun borrarPublicacion(idPublicacion:String,url:String) {
+        db.document(idPublicacion).delete().addOnSuccessListener {
+            if (url!=""){
+                FirebaseStorage.getInstance().getReferenceFromUrl(url).delete()
+            }
+        }
+    }
+
+    override fun borrarPublicacionPorIdUsuario(idUsuario: String) {
+        db.whereEqualTo("id_usuario",idUsuario).get().addOnCompleteListener {
+            if (!it.result.isEmpty){
+                for (i in 0 until it.result.documents.size){
+                    val result=it.result.documents[i]
+                    val url=result.get("imagen") as String
+                    borrarPublicacion(result.id,url)
+                }
+            }
+        }
+    }
+
+    override fun editarPublicacion(publicacion: Publicacion) {
+        db.document(publicacion.id_publicacion?:"").set(publicacion)
+    }
+
+    override fun buscarPorCategoria(homeViewModel: ListadoPublicacionesViewModel,categoria: String,admin:Boolean) {
         if (admin){
             db.orderBy("num_likes").get().addOnCompleteListener {
                 if (!it.result.isEmpty){
@@ -334,7 +562,7 @@ class DAOPublicacion: IDAOPublicacion {
                     for (i in 0 until it.result.documents.size){
                         val result=it.result.documents[i]
                         val idCategoria:ArrayList<String> =result.get("id_categoria") as ArrayList<String>
-                        var categoriaExiste:Boolean=false
+                        var categoriaExiste=false
                         for (j in 0 until idCategoria.size){
                             if (idCategoria[j]==categoria){
                                 categoriaExiste=true
@@ -363,7 +591,7 @@ class DAOPublicacion: IDAOPublicacion {
                     for (i in 0 until it.result.documents.size){
                         val result=it.result.documents[i]
                         val idCategoria:ArrayList<String> =result.get("id_categoria") as ArrayList<String>
-                        var categoriaExiste:Boolean=false
+                        var categoriaExiste=false
                         for (j in 0 until idCategoria.size){
                             if (idCategoria[j]==categoria){
                                 categoriaExiste=true

@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Nickname"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:text="@string/nickname" />
 
     <Space
         android:layout_width="match_parent"
@@ -26,8 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Nombre"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:text="@string/nombre"  />
 
     <Space
         android:layout_width="match_parent"
@@ -39,8 +39,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Descripción"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:text="@string/descripcion"  />
 
     <Space
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:id="@+id/btn_guardarEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:text="@string/guardar"
         android:textAllCaps="false"
         app:cornerRadius="50dp" />
 </LinearLayout>

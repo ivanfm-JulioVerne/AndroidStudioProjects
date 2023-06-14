@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="00"
                 android:gravity="center"
-                android:text="TextView"
+                style="@style/Pacifico"
+                android:text="@string/titulo"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -46,7 +47,7 @@
                 android:id="@+id/tv_baneadoItemPublicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Baneado"
+                android:text="@string/baneado"
                 android:textColor="#FF0000"
                 android:visibility="gone" />
             <TextView
@@ -55,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:paddingLeft="5dp"
-                android:text="TextView" />
+                android:text="@string/descripcion" />
         </LinearLayout>
     </LinearLayout>
 

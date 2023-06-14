@@ -21,7 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class NoAuth : Fragment() {
 
-    private var _binding:FragmentNoAuthBinding?=null;
+    private var _binding:FragmentNoAuthBinding?=null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +33,9 @@ class NoAuth : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding=FragmentNoAuthBinding.inflate(inflater,container,false);
-        val root=binding.root;
+    ): View {
+        _binding=FragmentNoAuthBinding.inflate(inflater,container,false)
+        val root=binding.root
 
         val bLogin:Button=binding.bLoginEmail
         bLogin.setOnClickListener {v ->
@@ -76,12 +76,11 @@ class NoAuth : Fragment() {
                             val daoUsuario: IDAOUsuario = DAOUsuario()
                             daoUsuario.comprobarUsuarioExiste(it.result.user?.uid.toString(),binding.root)
                             //(activity as AuthActivity).goToMainActivity()
-                        } else {
                         }
                     }
                 }
             } catch (e: ApiException){
-                Log.d(":::Error ApiException", e.toString()+" - "+e.message.toString())
+                Log.e(":::Error ApiException", e.toString()+" - "+e.message.toString())
             }
         }
     }

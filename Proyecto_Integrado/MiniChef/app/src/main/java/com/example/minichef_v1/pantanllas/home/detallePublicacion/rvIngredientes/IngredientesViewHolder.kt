@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.R
 
 class IngredientesViewHolder(view: View): RecyclerView.ViewHolder(view) {
-    var texto=view.findViewById<TextView>(R.id.tv_pasosItem)
+    var texto: TextView =view.findViewById(R.id.tv_pasosItem)
 
     fun render(ingrediente:String){
         texto.text=ingrediente

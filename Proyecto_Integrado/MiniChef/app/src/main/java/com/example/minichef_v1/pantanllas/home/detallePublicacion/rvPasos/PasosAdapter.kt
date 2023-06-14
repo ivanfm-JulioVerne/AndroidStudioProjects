@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minichef_v1.R
-import com.example.minichef_v1.pantanllas.home.detallePublicacion.rvIngredientes.IngredientesViewHolder
 
 class PasosAdapter(private val pasos:ArrayList<String>): RecyclerView.Adapter<PasosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasosViewHolder {

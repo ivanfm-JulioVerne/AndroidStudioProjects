@@ -11,9 +11,8 @@ import com.example.minichef_v1.bd.dao.seguir.IDAOSeguir
 import com.example.minichef_v1.bd.dao.usuario.DAOUsuario
 import com.example.minichef_v1.bd.dao.usuario.IDAOUsuario
 import com.example.minichef_v1.bd.modelo.Publicacion
-import com.example.minichef_v1.pantanllas.home.detallePublicacion.DetallePublicacionViewModel
 
-class AutorViewModel(private val idAutor:String,private val idUsuario:String,private val admin:Boolean):ViewModel() {
+class AutorViewModel(private val idAutor:String,private val idUsuario:String, admin:Boolean):ViewModel() {
 
     private val daoPublicacion:IDAOPublicacion=DAOPublicacion()
     private val daoSeguir:IDAOSeguir=DAOSeguir()

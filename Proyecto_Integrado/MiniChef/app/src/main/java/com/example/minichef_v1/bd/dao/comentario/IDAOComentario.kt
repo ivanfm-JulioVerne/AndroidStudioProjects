@@ -20,4 +20,6 @@ interface IDAOComentario {
     fun unbanComentarioPorUsuario(idUsuario:String)
 
     fun unbanComentario(id:String)
+
+    fun borrarComentarioPorIdUsuario(idUsuario: String)
 }

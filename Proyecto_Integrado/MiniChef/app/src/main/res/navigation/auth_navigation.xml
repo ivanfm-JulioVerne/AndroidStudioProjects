@@ -11,13 +11,19 @@
         tools:layout="@layout/fragment_no_auth" >
         <action
             android:id="@+id/action_noAuth_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/login"
+            app:popUpTo="@id/noAuth"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_noAuth_to_signin"
-            app:destination="@id/signin" />
+            app:destination="@id/signin"
+            app:popUpTo="@id/noAuth"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_noAuth_to_nuevoUsuarioGoogle"
-            app:destination="@id/nuevoUsuarioGoogle" />
+            app:destination="@id/nuevoUsuarioGoogle"
+            app:popUpTo="@id/noAuth"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -26,7 +32,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_signin"
-            app:destination="@id/signin" />
+            app:destination="@id/signin"
+            app:popUpTo="@id/noAuth"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/signin"
@@ -35,7 +43,9 @@
         tools:layout="@layout/fragment_signin" >
         <action
             android:id="@+id/action_signin_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/login"
+            app:popUpTo="@id/noAuth"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/nuevoUsuarioGoogle"

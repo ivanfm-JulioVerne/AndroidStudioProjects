@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MiniChef_v1"
+    tools:context=".pantanllas.home.viewPager2.listadoPublicaciones.ListadoPublicacionesFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/sv_buscarPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </SearchView>
+
+        <Button
+            android:id="@+id/btn_buscarUsuarios"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:text="@string/usuarios"
+            app:cornerRadius="50dp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider10"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/categoriaBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autofillHints="Elige Categoria" />
+
+        <ImageButton
+            android:id="@+id/btnCancelarBusqueda"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_cancel_24"
+            android:layout_weight="0"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <Button
+            android:id="@+id/btnBuscarPorCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/buscar"
+            app:cornerRadius="50dp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider9"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_weight="0"
+        android:background="?android:attr/listDivider" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_publicaciones"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

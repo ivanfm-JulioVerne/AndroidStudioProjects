@@ -1,41 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantanllas.home.HomeFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@style/Theme.MiniChef_v1">
 
-    <SearchView
-        android:id="@+id/sv_buscarPublicacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </SearchView>
-
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:background="@color/background_day"/>
 
-        <Spinner
-            android:id="@+id/categoriaBuscar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btnBuscarPorCategoria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Buscar" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_publicaciones"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
 </LinearLayout>

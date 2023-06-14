@@ -12,4 +12,44 @@
         <item>Picante</item>
         <item>Fácil</item>
     </string-array>
+    <string name="baneado">Baneado</string>
+    <string name="desbanear">Desbanear</string>
+    <string name="banear">Banear</string>
+    <string name="siguiendo">Siguiendo</string>
+    <string name="seguirdores">Seguidores</string>
+    <string name="publicaciones">Publicaciones</string>
+    <string name="seguir">Seguir</string>
+    <string name="dejarSeguir">Dejar de Seguir</string>
+    <string name="nickname">Nickname</string>
+    <string name="nombre">Nombre</string>
+    <string name="descripcion">Descripción</string>
+    <string name="titulo">Título</string>
+    <string name="autor">Autor</string>
+    <string name="categoria">Categoría:</string>
+    <string name="categoria1">Categoría 1</string>
+    <string name="categoria2">Categoría 2</string>
+    <string name="ingredientes">Ingredientes:</string>
+    <string name="pasos">Pasos:</string>
+    <string name="comentarios">Comentarios</string>
+    <string name="escribeComentario">Escribe un comentario</string>
+    <string name="guardar">Guardar</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="buscar">Buscar</string>
+    <string name="email">Email</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="iniciarSesionGoogle">Iniciar Sesión con Google</string>
+    <string name="camara">Cámara</string>
+    <string name="galeria">Galería</string>
+    <string name="agregarIngrediente">Agregar Ingrediente</string>
+    <string name="agregarPaso">Agregar Pasos</string>
+    <string name="publicar">Publicar</string>
+    <string name="biografia">Biografía</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmarContrasena">Confirmar contraseña</string>
+    <string name="ingrediente">Ingrediente</string>
+    <string name="paso">Paso</string>
+    <string name="usuario">Usuario</string>
+    <string name="populares">Populares</string>
 </resources>
